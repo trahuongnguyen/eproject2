@@ -5,6 +5,10 @@
 package com.mycompany.librarymanagement.module;
 
 import java.sql.Date;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -68,4 +72,15 @@ public class Librarians {
         this.email = email;
     }
     
+    public void readRecord(ResultSet resultSet){
+        try {
+            this.full_name = resultSet.getString("full_name");
+            this.address = resultSet.getString("address");
+            this.phone_number = resultSet.getString("phone_number");
+            this.birthday = resultSet.getDate("birthday");
+            this.email = resultSet.getString("email");
+        } catch (SQLException ex) {
+            Logger.getLogger(Librarians.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

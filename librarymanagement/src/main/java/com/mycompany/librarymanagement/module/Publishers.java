@@ -4,6 +4,11 @@
  */
 package com.mycompany.librarymanagement.module;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author DELL
@@ -56,4 +61,14 @@ public class Publishers {
         this.phone_number = phone_number;
     }
     
+    public void readRecord(ResultSet resultSet){
+        try {
+            this.name = resultSet.getString("name");
+            this.address = resultSet.getString("address");
+            this.email = resultSet.getString("email");
+            this.phone_number = resultSet.getString("phone_number");
+        } catch (SQLException ex) {
+            Logger.getLogger(Publishers.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }

@@ -54,4 +54,22 @@ public class AuthorCRUD extends BaseCRUD{
         disconnect();
         return dataList;
     }
+    
+    public static void editAuthor(Authors author, int id){
+        connect();
+        
+        String sql = "update authors set full_name = ?, birthday  = ? where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, author.getFull_name());
+            statement.setDate(2, author.getBirthday());
+            statement.setInt(3, id);
+            
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

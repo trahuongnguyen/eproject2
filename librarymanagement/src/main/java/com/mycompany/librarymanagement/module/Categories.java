@@ -4,6 +4,11 @@
  */
 package com.mycompany.librarymanagement.module;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author DELL
@@ -36,4 +41,12 @@ public class Categories {
         this.located_in = located_in;
     }
     
+    public void readRecord(ResultSet resultSet){
+        try {
+            this.title = resultSet.getString("title");
+            this.located_in = resultSet.getString("located_in");
+        } catch (SQLException ex) {
+            Logger.getLogger(Categories.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
