@@ -22,7 +22,7 @@ CREATE TABLE `books` (
   `id` integer PRIMARY KEY,
   `title` varchar(150),
   `category_id` integer,
-  `publishers_id` integer,
+  `publisher_id` integer,
   `language` varchar(50),
   `author_id` integer,
   `quantity` integer,
@@ -40,8 +40,8 @@ CREATE TABLE `card_members` (
 
 CREATE TABLE `borrowes` (
   `id` integer PRIMARY KEY,
-  `books_id` integer,
-  `card_members_id` integer,
+  `book_id` integer,
+  `card_member_id` integer,
   `librarian_id` integer,
   `borrow_from_date` date,
   `borrow_to_date` date,
@@ -71,12 +71,12 @@ CREATE TABLE `admin` (
 
 ALTER TABLE `books` ADD FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`);
 
-ALTER TABLE `books` ADD FOREIGN KEY (`publishers_id`) REFERENCES `publishers` (`id`);
+ALTER TABLE `books` ADD FOREIGN KEY (`publisher_id`) REFERENCES `publishers` (`id`);
 
 ALTER TABLE `books` ADD FOREIGN KEY (`author_id`) REFERENCES `authors` (`id`);
 
-ALTER TABLE `borrowes` ADD FOREIGN KEY (`books_id`) REFERENCES `books` (`id`);
+ALTER TABLE `borrowes` ADD FOREIGN KEY (`book_id`) REFERENCES `books` (`id`);
 
-ALTER TABLE `borrowes` ADD FOREIGN KEY (`card_members_id`) REFERENCES `card_members` (`id`);
+ALTER TABLE `borrowes` ADD FOREIGN KEY (`card_member_id`) REFERENCES `card_members` (`id`);
 
 ALTER TABLE `borrowes` ADD FOREIGN KEY (`librarian_id`) REFERENCES `librarians` (`id`);
