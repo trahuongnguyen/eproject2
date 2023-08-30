@@ -27,7 +27,7 @@
       <TextField layoutX="129.0" layoutY="94.0" prefHeight="26.0" prefWidth="420.0" />
       <TextField layoutX="129.0" layoutY="143.0" prefHeight="26.0" prefWidth="420.0" />
       <Button layoutX="133.0" layoutY="350.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Save" />
-      <Separator layoutX="64.0" layoutY="47.0" prefHeight="3.0" prefWidth="607.0" AnchorPane.leftAnchor="64.0" AnchorPane.rightAnchor="7.0" />
+      <Separator layoutY="47.0" prefHeight="3.0" prefWidth="551.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7999999999999545" />
       <Text layoutX="133.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
          <font>
             <Font size="18.0" />
