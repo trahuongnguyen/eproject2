@@ -64,11 +64,29 @@ public class LibraryController implements Initializable {
     }
     
     @FXML
+    private void cardmember(MouseEvent event) {
+        Pane view = getPage("cardmember");
+        bp.setCenter(view);
+    }
+    
+    @FXML
     private void addauthors(MouseEvent event) throws IOException {
         Pane view = getPage("addauthors");
         bp.setCenter(view);
     }
-
+    
+    @FXML
+    private void addpublisher(MouseEvent event) {
+        Pane view = getPage("addpublisher");
+        bp.setCenter(view);
+    }
+    
+    @FXML
+    private void librarians(MouseEvent event) {
+        Pane view = getPage("librarians");
+        bp.setCenter(view);
+    }
+    
     @FXML
     private void logout(ActionEvent event) throws IOException {
         App.setRoot("login");
@@ -89,6 +107,12 @@ public class LibraryController implements Initializable {
         }
         return view;
     }
+
+    
+
+    
+
+    
 
     
 

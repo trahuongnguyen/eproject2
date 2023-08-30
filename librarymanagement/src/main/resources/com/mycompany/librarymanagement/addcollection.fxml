@@ -20,7 +20,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Separator layoutY="45.0" prefHeight="2.0" prefWidth="551.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7999999999999545" />
+      <Separator layoutY="47.0" prefHeight="3.0" prefWidth="551.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7999999999999545" />
       <TextField layoutX="60.0" layoutY="90.0" prefHeight="26.0" prefWidth="420.0" promptText="Collection Title" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="72.0" />
       <Text layoutX="60.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Language">
          <font>

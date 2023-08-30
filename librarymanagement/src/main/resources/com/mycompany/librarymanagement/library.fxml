@@ -108,6 +108,48 @@
                         </Text>
                      </children>
                   </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="133.0" prefHeight="30.0" prefWidth="148.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/printer-door-open.png" />
+                           </image>
+                        </ImageView>
+                        <Text onMouseClicked="#addpublisher" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Publisher" wrappingWidth="110.93663215637207">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="159.0" onMouseClicked="#cardmember" prefHeight="30.0" prefWidth="148.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/bank-card-front-side.png" />
+                           </image>
+                        </ImageView>
+                        <Text onMouseClicked="#addpublisher" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Member" wrappingWidth="110.93663215637207">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" layoutX="10.0" layoutY="184.0" onMouseClicked="#librarians" prefHeight="30.0" prefWidth="148.0" spacing="5.0">
+                     <children>
+                        <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@img/reading.png" />
+                           </image>
+                        </ImageView>
+                        <Text onMouseClicked="#addpublisher" strokeType="OUTSIDE" strokeWidth="0.0" text="Librarians" wrappingWidth="110.93663215637207">
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </HBox>
                </children>
                <VBox.margin>
                   <Insets top="10.0" />
