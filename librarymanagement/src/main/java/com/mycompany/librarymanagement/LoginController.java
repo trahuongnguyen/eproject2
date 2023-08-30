@@ -13,6 +13,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import java.io.IOException;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.layout.Pane;
 
 /**
  * FXML Controller class
@@ -55,4 +57,5 @@ public class LoginController{
     void login(ActionEvent event) throws IOException {
         App.setRoot("library");
     }
+    
 }
