@@ -16,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.AdditemController">
+<BorderPane fx:id="bp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.LibraryController">
    <top>
       <HBox alignment="CENTER_LEFT" prefHeight="50.0" prefWidth="700.0" style="-fx-background-color: #ffff;" BorderPane.alignment="CENTER">
          <children>
@@ -60,8 +60,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/add.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Item" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -74,8 +73,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/sorting-answers.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Collection" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -88,8 +86,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/bar-chart.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text onMouseClicked="#dashboard" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboards" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -122,18 +119,8 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboards">
-               <font>
-                  <Font name="System Bold" size="24.0" />
-               </font>
-            </Text>
-            <Text layoutX="60.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Collection" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="363.37714843749995">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <ComboBox layoutX="60.0" layoutY="85.0" prefHeight="26.0" prefWidth="420.0" promptText="Select" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="73.79999999999995" />
             <Separator layoutX="1.0" layoutY="47.0" prefHeight="2.0" prefWidth="551.0" />
+            <ComboBox layoutX="60.0" layoutY="15.0" prefWidth="220.0" promptText="Select for a collection." />
          </children>
       </AnchorPane>
    </center>

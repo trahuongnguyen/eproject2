@@ -7,32 +7,38 @@ package com.mycompany.librarymanagement;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 /**
  * FXML Controller class
  *
- * @author Pham Tuan
+ * @author DELL
  */
-public class DashboardController implements Initializable {
+public class LibraryController implements Initializable {
 
     @FXML
     private BorderPane bp;
+    @FXML
+    private Button logoutButton;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
 
-    @FXML
-    private void library(MouseEvent event) throws IOException {
-        App.setRoot("library");
+    private void home(MouseEvent event) throws IOException {
+        App.setRoot("dashboard");
     }
 
     @FXML
@@ -48,6 +54,16 @@ public class DashboardController implements Initializable {
     @FXML
     private void dashboard(MouseEvent event) throws IOException {
         App.setRoot("dashboard");
+    }
+
+    @FXML
+    private void library(MouseEvent event) throws IOException {
+        App.setRoot("library");
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+        App.setRoot("login");
     }
     
 }

@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
+import java.io.IOException;
 
 /**
  * FXML Controller class
@@ -51,7 +52,7 @@ public class LoginController{
     }
 
     @FXML
-    void login(ActionEvent event) {
-
+    void login(ActionEvent event) throws IOException {
+        App.setRoot("library");
     }
 }

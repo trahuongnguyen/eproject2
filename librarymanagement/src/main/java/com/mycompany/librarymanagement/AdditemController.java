@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
  */
@@ -7,9 +7,15 @@ package com.mycompany.librarymanagement;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -17,22 +23,24 @@ import javafx.scene.layout.BorderPane;
  *
  * @author Pham Tuan
  */
-public class DashboardController implements Initializable {
+public class AdditemController implements Initializable {
 
     @FXML
     private BorderPane bp;
-
-    /**
-     * Initializes the controller class.
-     */
+    @FXML
+    private Button logoutButton;
+    
+    
+   
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        
     }    
 
-    @FXML
-    private void library(MouseEvent event) throws IOException {
-        App.setRoot("library");
+    private void home(MouseEvent event) throws IOException {
+        App.setRoot("dashboard");
     }
 
     @FXML
@@ -49,5 +57,17 @@ public class DashboardController implements Initializable {
     private void dashboard(MouseEvent event) throws IOException {
         App.setRoot("dashboard");
     }
+
+    @FXML
+    private void library(MouseEvent event) throws IOException {
+        App.setRoot("library");
+    }
+
+    @FXML
+    private void logout(ActionEvent event) throws IOException {
+        App.setRoot("login");
+    }
+
+
     
 }

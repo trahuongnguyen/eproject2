@@ -9,7 +9,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
 /**
@@ -17,22 +19,30 @@ import javafx.scene.layout.BorderPane;
  *
  * @author Pham Tuan
  */
-public class DashboardController implements Initializable {
-
+public class AddcollectionController implements Initializable {
     @FXML
     private BorderPane bp;
+    @FXML
+    private Button home;
+    @FXML
+    private Button additem;
+    @FXML
+    private Button addcollection;
+    @FXML
+    private AnchorPane ap;
 
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
-    @FXML
-    private void library(MouseEvent event) throws IOException {
-        App.setRoot("library");
+     @FXML
+    private void home(MouseEvent event) throws IOException {
+        App.setRoot("dashboard");
     }
 
     @FXML
@@ -44,10 +54,14 @@ public class DashboardController implements Initializable {
     private void addcollection(MouseEvent event) throws IOException {
         App.setRoot("addcollection");
     }
-
+    
     @FXML
     private void dashboard(MouseEvent event) throws IOException {
         App.setRoot("dashboard");
     }
     
+    @FXML
+    private void library(MouseEvent event) throws IOException {
+        App.setRoot("library");
+    }
 }

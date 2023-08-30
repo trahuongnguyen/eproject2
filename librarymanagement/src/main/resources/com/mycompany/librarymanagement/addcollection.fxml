@@ -47,7 +47,7 @@
          <children>
             <VBox prefHeight="153.0" prefWidth="148.0">
                <children>
-                  <Text onMouseClicked="#library" strokeType="OUTSIDE" strokeWidth="0.0" text="Library" wrappingWidth="137.3366641998291">
+                  <Text onMouseClicked="#library" strokeType="OUTSIDE" strokeWidth="0.0" text="Library" wrappingWidth="136.53667640686035">
                      <font>
                         <Font name="System Bold" size="19.0" />
                      </font>
@@ -60,8 +60,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/add.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Item" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -74,8 +73,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/sorting-answers.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Collection" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -88,8 +86,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/bar-chart.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text onMouseClicked="#dashboard" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboards" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -122,18 +119,25 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboards">
+            <Text layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Collection">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Text>
-            <Text layoutX="60.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Select Collection" AnchorPane.leftAnchor="58.0" AnchorPane.rightAnchor="363.37714843749995">
+            <Text layoutX="60.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Collection Title">
                <font>
                   <Font size="18.0" />
                </font>
             </Text>
-            <ComboBox layoutX="60.0" layoutY="85.0" prefHeight="26.0" prefWidth="420.0" promptText="Select" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="73.79999999999995" />
-            <Separator layoutX="1.0" layoutY="47.0" prefHeight="2.0" prefWidth="551.0" />
+            <Separator layoutY="45.0" prefHeight="2.0" prefWidth="551.0" />
+            <TextField layoutX="60.0" layoutY="90.0" prefHeight="26.0" prefWidth="420.0" promptText="Collection Title" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="72.0" />
+            <Text layoutX="60.0" layoutY="160.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Language">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <ComboBox layoutX="60.0" layoutY="170.0" prefWidth="420.0" promptText="Language" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="72.0" />
+            <Button layoutX="60.0" layoutY="211.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Add Collection" />
          </children>
       </AnchorPane>
    </center>

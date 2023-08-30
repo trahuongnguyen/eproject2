@@ -5,6 +5,7 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -60,8 +61,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/add.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Item" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -74,8 +74,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/sorting-answers.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Add Collection" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -88,8 +87,7 @@
                         <ImageView fitHeight="25.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@img/bar-chart.png" />
-                           </image>
-                        </ImageView>
+                           </image></ImageView>
                         <Text onMouseClicked="#dashboard" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboards" wrappingWidth="110.93663215637207">
                            <font>
                               <Font size="16.0" />
@@ -122,7 +120,7 @@
    <center>
       <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <Text layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dashboards">
+            <Text layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Item">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -133,7 +131,38 @@
                </font>
             </Text>
             <ComboBox layoutX="60.0" layoutY="85.0" prefHeight="26.0" prefWidth="420.0" promptText="Select" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="73.79999999999995" />
+            <Text layoutX="60.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Title" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="459.13789062499995">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
             <Separator layoutX="1.0" layoutY="47.0" prefHeight="2.0" prefWidth="551.0" />
+            <Text layoutX="62.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Authors" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="428.27460937499995">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="60.0" layoutY="266.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Description" AnchorPane.leftAnchor="62.0" AnchorPane.rightAnchor="400.42207031249995">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField layoutX="60.0" layoutY="149.0" prefHeight="26.0" prefWidth="420.0" AnchorPane.leftAnchor="61.0" AnchorPane.rightAnchor="71.79999999999995" />
+            <TextField layoutX="60.0" layoutY="208.0" prefHeight="26.0" prefWidth="420.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="73.79999999999995" />
+            <TextArea layoutX="60.0" layoutY="271.0" prefHeight="60.0" prefWidth="420.0" AnchorPane.leftAnchor="59.0" AnchorPane.rightAnchor="74.0" />
+            <Text layoutX="60.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pages">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text layoutX="250.0" layoutY="355.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Price">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <TextField layoutX="60.0" layoutY="360.0" prefHeight="26.0" prefWidth="130.0" />
+            <TextField layoutX="250.0" layoutY="360.0" prefHeight="26.0" prefWidth="130.0" />
+            <Button layoutX="60.0" layoutY="400.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Submit" />
          </children>
       </AnchorPane>
    </center>
