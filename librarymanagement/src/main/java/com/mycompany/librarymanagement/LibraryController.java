@@ -91,6 +91,12 @@ public class LibraryController implements Initializable {
     private void logout(ActionEvent event) throws IOException {
         App.setRoot("login");
     }
+    
+    @FXML
+    void borrowes(MouseEvent event) {
+        Pane view = getPage("borrowlist");
+        bp.setCenter(view);
+    }
 
     public Pane view;
 
