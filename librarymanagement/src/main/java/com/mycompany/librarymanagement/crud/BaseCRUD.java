@@ -16,9 +16,9 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class BaseCRUD {
-    static final String DB_NAME = "librarymanagement";
+    static final String DB_NAME = "project2";
     static final String DB_USERNAME = "root";
-    final static String DB_PW = "ht010203";
+    final static String DB_PW = "12345678";
     static Connection conn = null;
     static PreparedStatement statement = null;
     
