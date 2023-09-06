@@ -25,6 +25,9 @@ public class HomepageController {
 
     @FXML
     private BorderPane sidepane;
+    
+    @FXML
+    private BorderPane viewpane;
 
     @FXML
     void add(MouseEvent event) {
@@ -41,7 +44,7 @@ public class HomepageController {
     @FXML
     void changepassword(MouseEvent event) {
         Pane view = getPage("changepassword");
-        sidepane.setCenter(view);
+        viewpane.setCenter(view);
     }
 
     @FXML
@@ -94,12 +97,6 @@ public class HomepageController {
     void memberlist(MouseEvent event) {
         Pane view = getPage("memberlist");
         sidepane.setCenter(view);
-    }
-
-    @FXML
-    void setting(MouseEvent event) {
-        Pane view = getPage("setting");
-        navpane.setCenter(view);
     }
     
     public Pane view;

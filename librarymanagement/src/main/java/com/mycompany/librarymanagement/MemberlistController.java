@@ -77,7 +77,7 @@ public class MemberlistController implements Initializable{
         birthday.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Member, String>, ObservableValue<String>>(){
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Member, String> param) {
-                return new SimpleStringProperty(param.getValue().getBirthday()+"");
+                return new SimpleStringProperty(param.getValue().getbirthday());
             }
         });
         
@@ -98,7 +98,7 @@ public class MemberlistController implements Initializable{
         duedate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Member, String>, ObservableValue<String>>(){
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Member, String> param) {
-                return new SimpleStringProperty(param.getValue().getDue_date()+"");
+                return new SimpleStringProperty(param.getValue().getdue_date());
             }
         });
         

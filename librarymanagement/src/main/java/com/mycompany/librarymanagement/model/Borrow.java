@@ -25,9 +25,9 @@ public class Borrow {
     IntegerProperty book_id;
     IntegerProperty card_member_id;
     IntegerProperty librarian_id;
-    Date borrow_from_date;
-    Date borrow_to_date;
-    Date actual_returned_date;
+    StringProperty borrow_from_date;
+    StringProperty borrow_to_date;
+    StringProperty actual_returned_date;
     StringProperty other_note;
     FloatProperty late_fee;
     FloatProperty borrow_fee;
@@ -36,14 +36,14 @@ public class Borrow {
     public Borrow() {
     }
 
-    public Borrow(int id, int book_id, int card_member_id, int librarian_id, Date borrow_from_date, Date borrow_to_date, Date actual_returned_date, String other_note, float late_fee, float borrow_fee, float total) {
+    public Borrow(int id, int book_id, int card_member_id, int librarian_id, String borrow_from_date, String borrow_to_date, String actual_returned_date, String other_note, float late_fee, float borrow_fee, float total) {
         this.id = new SimpleIntegerProperty(id);
         this.book_id = new SimpleIntegerProperty(book_id);
         this.card_member_id = new SimpleIntegerProperty(card_member_id);
         this.librarian_id = new SimpleIntegerProperty(librarian_id);
-        this.borrow_from_date = borrow_from_date;
-        this.borrow_to_date = borrow_to_date;
-        this.actual_returned_date = actual_returned_date;
+        this.borrow_from_date = new SimpleStringProperty(borrow_from_date);
+        this.borrow_to_date = new SimpleStringProperty(borrow_to_date);
+        this.actual_returned_date = new SimpleStringProperty(actual_returned_date);
         this.other_note = new SimpleStringProperty(other_note);
         this.late_fee = new SimpleFloatProperty(late_fee);
         this.borrow_fee = new SimpleFloatProperty(borrow_fee);
@@ -100,28 +100,40 @@ public class Borrow {
         return librarian_id.get();
     }
 
-    public Date getBorrow_from_date() {
+    public StringProperty getProBorrow_from_date() {
         return borrow_from_date;
     }
 
-    public void setBorrow_from_date(Date borrow_from_date) {
-        this.borrow_from_date = borrow_from_date;
+    public void setBorrow_from_date(String borrow_from_date) {
+        this.borrow_from_date = new SimpleStringProperty(borrow_from_date);
+    }
+    
+    public String getborrow_from_date(){
+        return borrow_from_date.get();
     }
 
-    public Date getBorrow_to_date() {
+    public StringProperty getProBorrow_to_date() {
         return borrow_to_date;
     }
 
-    public void setBorrow_to_date(Date borrow_to_date) {
-        this.borrow_to_date = borrow_to_date;
+    public void setBorrow_to_date(String borrow_to_date) {
+        this.borrow_to_date = new SimpleStringProperty(borrow_to_date);
+    }
+    
+    public String getborrow_to_date(){
+        return borrow_to_date.get();
     }
 
-    public Date getActual_returned_date() {
+    public StringProperty getProActual_returned_date() {
         return actual_returned_date;
     }
 
-    public void setActual_returned_date(Date actual_returned_date) {
-        this.actual_returned_date = actual_returned_date;
+    public void setActual_returned_date(String actual_returned_date) {
+        this.actual_returned_date = new SimpleStringProperty(actual_returned_date);
+    }
+    
+    public String getactual_returned_date(){
+        return actual_returned_date.get();
     }
 
     public StringProperty getProOther_note() {
@@ -178,9 +190,9 @@ public class Borrow {
             this.book_id = new SimpleIntegerProperty(resultSet.getInt("book_id"));
             this.card_member_id = new SimpleIntegerProperty(resultSet.getInt("card_member_id"));
             this.librarian_id = new SimpleIntegerProperty(resultSet.getInt("librarian_id"));
-            this.borrow_from_date = resultSet.getDate("borrow_from_date");
-            this.borrow_to_date = resultSet.getDate("borrow_to_date");
-            this.actual_returned_date = resultSet.getDate("actual_returned_date");
+            this.borrow_from_date = new SimpleStringProperty(resultSet.getString("borrow_from_date"));
+            this.borrow_to_date = new SimpleStringProperty(resultSet.getString("borrow_to_date"));
+            this.actual_returned_date = new SimpleStringProperty(resultSet.getString("actual_returned_date"));
             this.other_note = new SimpleStringProperty(resultSet.getString("other_note"));
             this.late_fee = new SimpleFloatProperty(resultSet.getFloat("late_fee"));
             this.borrow_fee = new SimpleFloatProperty(resultSet.getFloat("borrow_fee"));

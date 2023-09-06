@@ -14,15 +14,15 @@
          <content>
             <TableView fx:id="borrowtable" prefHeight="200.0">
                <columns>
-                  <TableColumn fx:id="stt" prefWidth="70.0" text="STT" />
-                  <TableColumn fx:id="book" prefWidth="250.0" text="Book" />
-                  <TableColumn fx:id="member" prefWidth="200.0" text="Member" />
-                  <TableColumn fx:id="librarian" prefWidth="200.0" text="Librarian" />
-                  <TableColumn fx:id="duedate" prefWidth="200.0" text="Due Date" />
-                  <TableColumn fx:id="actualdate" prefWidth="100.0" text="Actual Date" />
-                  <TableColumn fx:id="latefee" prefWidth="100.0" text="Late Fee" />
-                  <TableColumn fx:id="borrowfee" prefWidth="100.0" text="Borrow Fee" />
-                  <TableColumn fx:id="total" prefWidth="100.0" text="Total" />
+                  <TableColumn fx:id="stt" prefWidth="50.0" text="STT" />
+                  <TableColumn fx:id="book" prefWidth="150.0" text="Book" />
+                  <TableColumn fx:id="member" prefWidth="150.0" text="Member" />
+                  <TableColumn fx:id="librarian" prefWidth="150.0" text="Librarian" />
+                  <TableColumn fx:id="duedate" prefWidth="400.0" text="Due Date" />
+                  <TableColumn fx:id="actualdate" prefWidth="200.0" text="Actual Date" />
+                  <TableColumn fx:id="latefee" prefWidth="94.39996337890625" text="Late Fee" />
+                  <TableColumn fx:id="borrowfee" prefWidth="82.39990234375" text="Borrow Fee" />
+                  <TableColumn fx:id="total" prefWidth="85.5999755859375" text="Total" />
                </columns>
             </TableView>
          </content>

@@ -23,21 +23,21 @@ public class Member {
     StringProperty full_name;
     StringProperty address;
     StringProperty phone_number;
-    Date birthday;
+    StringProperty birthday;
     StringProperty email;
-    Date due_date;
+    StringProperty due_date;
 
     public Member() {
     }
 
-    public Member(int id, String full_name, String address, String phone_number, Date birthday, String email, Date due_date) {
+    public Member(int id, String full_name, String address, String phone_number, String birthday, String email, String due_date) {
         this.id = new SimpleIntegerProperty(id);
         this.full_name = new SimpleStringProperty(full_name);
         this.address = new SimpleStringProperty(address);
         this.phone_number = new SimpleStringProperty(phone_number);
-        this.birthday = birthday;
+        this.birthday = new SimpleStringProperty(birthday);
         this.email = new SimpleStringProperty(email);
-        this.due_date = due_date;
+        this.due_date = new SimpleStringProperty(due_date);
     }
 
     public IntegerProperty getProId() {
@@ -88,12 +88,16 @@ public class Member {
         return phone_number.get();
     }
 
-    public Date getBirthday() {
+    public StringProperty getProBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setBirthday(String birthday) {
+        this.birthday = new SimpleStringProperty(birthday);
+    }
+    
+    public String getbirthday(){
+        return birthday.get();
     }
 
     public StringProperty getProEmail() {
@@ -108,12 +112,16 @@ public class Member {
         return email.get();
     }
 
-    public Date getDue_date() {
+    public StringProperty getProDue_date() {
         return due_date;
     }
 
-    public void setDue_date(Date due_date) {
-        this.due_date = due_date;
+    public void setDue_date(String due_date) {
+        this.due_date = new SimpleStringProperty(due_date);
+    }
+    
+    public String getdue_date(){
+        return due_date.get();
     }
     
     public void readRecord(ResultSet resultSet){
@@ -122,9 +130,9 @@ public class Member {
             this.full_name = new SimpleStringProperty(resultSet.getString("full_name"));
             this.address = new SimpleStringProperty(resultSet.getString("address"));
             this.phone_number = new SimpleStringProperty(resultSet.getString("phone_number"));
-            this.birthday = resultSet.getDate("birthday");
+            this.birthday = new SimpleStringProperty(resultSet.getString("birthday"));
             this.email = new SimpleStringProperty(resultSet.getString("email"));
-            this.due_date = resultSet.getDate("due_date");
+            this.due_date = new SimpleStringProperty(resultSet.getString("due_date"));
         } catch (SQLException ex) {
             Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -60,7 +60,7 @@ public class LibrarianlistController implements Initializable{
         birthday.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<Librarian, String>, ObservableValue<String>>(){
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<Librarian, String> param) {
-                return new SimpleStringProperty(param.getValue().getBirthday()+"");
+                return new SimpleStringProperty(param.getValue().getbirthday());
             }
         });
         

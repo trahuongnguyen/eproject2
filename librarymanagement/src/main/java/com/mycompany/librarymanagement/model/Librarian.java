@@ -23,18 +23,18 @@ public class Librarian {
     StringProperty full_name;
     StringProperty address;
     StringProperty phone_number;
-    Date birthday;
+    StringProperty birthday;
     StringProperty email;
 
     public Librarian() {
     }
 
-    public Librarian(int id, String full_name, String address, String phone_number, Date birthday, String email) {
+    public Librarian(int id, String full_name, String address, String phone_number, String birthday, String email) {
         this.id = new SimpleIntegerProperty(id);
         this.full_name = new SimpleStringProperty(full_name);
         this.address = new SimpleStringProperty(address);
         this.phone_number = new SimpleStringProperty(phone_number);
-        this.birthday = birthday;
+        this.birthday = new SimpleStringProperty(birthday);
         this.email = new SimpleStringProperty(email);
     }
 
@@ -86,12 +86,16 @@ public class Librarian {
         return phone_number.get();
     }
 
-    public Date getBirthday() {
+    public StringProperty getproBirthday() {
         return birthday;
     }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
+    public void setBirthday(String birthday) {
+        this.birthday = new SimpleStringProperty(birthday);
+    }
+    
+    public String getbirthday(){
+        return birthday.get();
     }
 
     public StringProperty getProEmail() {
@@ -112,7 +116,7 @@ public class Librarian {
             this.full_name = new SimpleStringProperty(resultSet.getString("full_name"));
             this.address = new SimpleStringProperty(resultSet.getString("address"));
             this.phone_number = new SimpleStringProperty(resultSet.getString("phone_number"));
-            this.birthday = resultSet.getDate("birthday");
+            this.birthday = new SimpleStringProperty(resultSet.getString("birthday"));
             this.email = new SimpleStringProperty(resultSet.getString("email"));
         } catch (SQLException ex) {
             Logger.getLogger(Librarian.class.getName()).log(Level.SEVERE, null, ex);

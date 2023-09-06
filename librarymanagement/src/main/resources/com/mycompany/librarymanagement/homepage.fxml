@@ -44,37 +44,37 @@
                      <left>
                         <AnchorPane style="-fx-background-color: #f2f0e9;" BorderPane.alignment="CENTER">
                            <children>
-                              <JFXButton layoutX="3.0" layoutY="14.0" onMouseClicked="#itemlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #f2f0e9;" text="Item List">
+                              <JFXButton layoutX="3.0" layoutY="14.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#itemlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #f2f0e9;" text="Item List" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton layoutY="54.0" onMouseClicked="#collectionlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Collection">
+                              <JFXButton layoutY="54.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#collectionlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Collection" AnchorPane.leftAnchor="0.0">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton layoutY="94.0" onMouseClicked="#authorlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Author">
+                              <JFXButton layoutY="94.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#authorlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Author">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton layoutY="134.0" onMouseClicked="#publisherlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Publisher">
+                              <JFXButton layoutY="134.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#publisherlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Publisher" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton layoutY="174.0" onMouseClicked="#borrowlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Borrow" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <JFXButton layoutY="174.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#borrowlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Borrow" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton layoutX="1.0" layoutY="214.0" onMouseClicked="#librarianlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Librarian" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <JFXButton layoutX="1.0" layoutY="214.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#librarianlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Librarian" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton layoutX="2.0" layoutY="254.0" onMouseClicked="#memberlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Member" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                              <JFXButton layoutX="2.0" layoutY="254.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#memberlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Member" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                                  <font>
                                     <Font size="18.0" />
                                  </font>
@@ -86,12 +86,15 @@
                         </AnchorPane>
                      </left>
                      <center>
-                        <AnchorPane BorderPane.alignment="CENTER" />
+                        <BorderPane fx:id="viewpane" BorderPane.alignment="CENTER">
+                           <center>
+                              <AnchorPane BorderPane.alignment="CENTER" />
+                           </center></BorderPane>
                      </center>
                   </BorderPane>
                </center>
                <left>
-                  <AnchorPane prefHeight="340.0" prefWidth="30.0" style="-fx-background-color: #f7f5eb;" BorderPane.alignment="CENTER">
+                  <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="30.0" style="-fx-background-color: #f7f5eb;" BorderPane.alignment="CENTER">
                      <children>
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="70.0" onMouseClicked="#list" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="60.0">
                            <image>
@@ -111,11 +114,6 @@
                         <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="13.0" layoutY="80.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5">
                            <image>
                               <Image url="@../../../image/logout.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="13.0" layoutY="80.0" onMouseClicked="#setting" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="180.0">
-                           <image>
-                              <Image url="@../../../image/settings.png" />
                            </image>
                         </ImageView>
                      </children>

@@ -50,7 +50,7 @@ public class MemberCRUD {
         
         connect();
         
-        String sql = "select * from card_member where id = ?";
+        String sql = "select * from card_members where id = ?";
         try {
             statement = conn.prepareStatement(sql);
             statement.setInt(1, id);

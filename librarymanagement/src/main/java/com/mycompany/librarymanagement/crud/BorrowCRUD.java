@@ -5,7 +5,6 @@
 package com.mycompany.librarymanagement.crud;
 
 import com.mycompany.librarymanagement.model.Borrow;
-import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -51,9 +50,9 @@ public class BorrowCRUD extends BaseCRUD{
             statement.setInt(1, borrow.getbook_id());
             statement.setInt(2, borrow.getcard_member_id());
             statement.setInt(3, borrow.getlibrarian_id());
-            statement.setDate(4, (Date) borrow.getBorrow_from_date());
-            statement.setDate(5, (Date) borrow.getBorrow_to_date());
-            statement.setDate(6, (Date) borrow.getActual_returned_date());
+            statement.setString(4, borrow.getborrow_from_date());
+            statement.setString(5,  borrow.getborrow_to_date());
+            statement.setString(6, borrow.getactual_returned_date());
             statement.setString(7, borrow.getother_note());
             statement.setFloat(8, borrow.getlate_fee());
             statement.setFloat(9, borrow.getborrow_fee());

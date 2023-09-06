@@ -51,4 +51,7 @@
          </effect>
       </AnchorPane>
    </left>
+   <center>
+      <BorderPane fx:id="viewpane" />
+   </center>
 </BorderPane>

@@ -81,12 +81,12 @@ public class BorrowlistController implements Initializable{
             }
         });
         
-        duedate.setCellValueFactory((TableColumn.CellDataFeatures<BorrowInfo, String> param) -> new SimpleStringProperty(param.getValue().getBorrow().getBorrow_from_date()+"-"+param.getValue().getBorrow().getBorrow_to_date()));
+        duedate.setCellValueFactory((TableColumn.CellDataFeatures<BorrowInfo, String> param) -> new SimpleStringProperty(param.getValue().getBorrow().getborrow_from_date()+"  -  "+param.getValue().getBorrow().getborrow_to_date()));
         
         actualdate.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<BorrowInfo, String>, ObservableValue<String>>(){
             @Override
             public ObservableValue<String> call(TableColumn.CellDataFeatures<BorrowInfo, String> param) {
-                return new SimpleStringProperty(param.getValue().getBorrow().getActual_returned_date()+"");
+                return new SimpleStringProperty(param.getValue().getBorrow().getactual_returned_date());
             }
         });
         
