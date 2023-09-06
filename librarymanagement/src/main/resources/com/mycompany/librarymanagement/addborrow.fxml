@@ -10,68 +10,72 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.AddborrowController">
    <children>
-      <Text layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Borrowes">
+      <Separator layoutY="55.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <Text layoutX="41.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Borrow" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="1.0">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Text>
-      <Text layoutX="63.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Title">
+      <Text layoutX="40.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Book Title" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="60.0">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Separator layoutY="47.0" prefHeight="3.0" prefWidth="551.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7999999999999545" />
-      <Button layoutX="60.0" layoutY="500.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Save" />
-      <Text layoutX="63.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Librarian">
+      <ComboBox fx:id="booktitle" layoutX="136.0" layoutY="60.0" prefWidth="150.0" promptText="Choose Book Title" AnchorPane.topAnchor="60.0" />
+      <Text layoutX="40.0" layoutY="122.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Member" AnchorPane.leftAnchor="40.0">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="65.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card Member">
+      <ComboBox fx:id="member" layoutX="136.0" layoutY="102.0" prefWidth="150.0" promptText="Choose Member" />
+      <Text layoutX="40.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Librarian" AnchorPane.leftAnchor="40.0">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Text layoutX="63.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From">
+      <ComboBox fx:id="librarian" layoutX="136.0" layoutY="145.0" prefWidth="150.0" promptText="Choose Librarian" />
+      <Text layoutX="40.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Late Fee" AnchorPane.leftAnchor="40.0">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <ComboBox layoutX="63.0" layoutY="90.0" prefWidth="150.0" promptText="Book Title" />
-      <ComboBox layoutX="63.0" layoutY="157.0" prefWidth="150.0" promptText="Card Member" />
-      <ComboBox layoutX="63.0" layoutY="225.0" prefWidth="150.0" promptText="Librarian" />
-      <DatePicker layoutX="110.0" layoutY="268.0" />
-      <Text layoutX="307.0" layoutY="288.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+      <TextField fx:id="latefee" layoutX="128.0" layoutY="265.0" promptText="Late Fee" />
+      <Button fx:id="addborrow_btn" layoutX="40.0" layoutY="422.0" mnemonicParsing="false" onMouseClicked="#addborrow" text="Save" AnchorPane.leftAnchor="40.0">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
+         </font>
+      </Button>
+      <Text layoutX="40.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From" AnchorPane.leftAnchor="40.0">
+         <font>
+            <Font size="20.0" />
          </font>
       </Text>
-      <DatePicker layoutX="340.0" layoutY="268.0" />
-      <Text layoutX="63.0" layoutY="325.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actual Returned Date">
+      <DatePicker fx:id="from" layoutX="100.0" layoutY="183.0" />
+      <Text layoutX="287.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <DatePicker layoutX="270.0" layoutY="305.0" />
-      <Text layoutX="63.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Other Note">
+      <DatePicker fx:id="to" layoutX="320.0" layoutY="182.0" />
+      <Text layoutX="40.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actual Returned Date" AnchorPane.leftAnchor="40.0">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <TextArea layoutX="63.0" layoutY="366.0" prefHeight="74.0" prefWidth="378.0" />
-      <Text layoutX="63.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Late Fee">
+      <DatePicker fx:id="actualdate" layoutX="241.0" layoutY="224.0" />
+      <Text layoutX="287.0" layoutY="286.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrow Fee">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="132.0" layoutY="457.0" promptText="Late Fee" />
-      <Text layoutX="295.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Borrow Fee">
+      <TextField fx:id="borrowfee" layoutX="400.0" layoutY="265.0" promptText="Borrow Fee" />
+      <Text layoutX="40.0" layoutY="327.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Note" AnchorPane.leftAnchor="40.0">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="387.0" layoutY="457.0" promptText="Borrow Fee" />
+      <TextArea fx:id="note" layoutX="100.0" layoutY="305.0" prefHeight="89.0" />
    </children>
 </AnchorPane>

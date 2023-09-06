@@ -7,8 +7,7 @@ module com.mycompany.librarymanagement {
     requires java.base;
     requires java.sql;
     requires org.controlsfx.controls;
-    requires flow;
-    requires de.jensd.fx.glyphs.fontawesome;
+    requires com.jfoenix;
     opens com.mycompany.librarymanagement to javafx.fxml;
     exports com.mycompany.librarymanagement;
 }

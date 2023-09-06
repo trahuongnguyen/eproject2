@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane fx:id="sidepane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.AddController">
+   <left>
+      <AnchorPane style="-fx-background-color: #f2f0e9;" BorderPane.alignment="CENTER">
+         <children>
+            <JFXButton layoutX="3.0" layoutY="14.0" onMouseClicked="#additem" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #f2f0e9;" text="Add Item">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutY="54.0" onMouseClicked="#addcollection" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Collection">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutY="94.0" onMouseClicked="#addauthor" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Author">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutY="134.0" onMouseClicked="#addpublisher" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Publisher">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutY="174.0" onMouseClicked="#addborrow" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Borrow" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="1.0" layoutY="214.0" onMouseClicked="#addlibrarian" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Librarian" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="2.0" layoutY="254.0" onMouseClicked="#addmember" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Member" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </JFXButton>
+         </children>
+         <effect>
+            <InnerShadow />
+         </effect>
+      </AnchorPane>
+   </left>
+</BorderPane>

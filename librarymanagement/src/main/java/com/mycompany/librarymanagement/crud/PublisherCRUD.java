@@ -4,7 +4,7 @@
  */
 package com.mycompany.librarymanagement.crud;
 
-import com.mycompany.librarymanagement.module.Publishers;
+import com.mycompany.librarymanagement.model.Publisher;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class PublisherCRUD extends BaseCRUD{
-    public static List<Publishers> getList(){
-        List<Publishers> dataList = new ArrayList<>();
+    public static List<Publisher> getlist(){
+        List<Publisher> publisherList = new ArrayList<>();
         
         connect();
         
@@ -28,55 +28,41 @@ public class PublisherCRUD extends BaseCRUD{
             ResultSet resultSet = statement.executeQuery();
             
             while (resultSet.next()) {                
-                Publishers pub = new Publishers();
+                Publisher pub = new Publisher();
                 pub.readRecord(resultSet);
-                dataList.add(pub);
+                publisherList.add(pub);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(PublisherCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
         
-        return dataList;
+        return publisherList;
     }
     
-    public static void addPublisher(Publishers pub){
+    public static List<Publisher> getlistById(int id){
+        List<Publisher> publisherList = new ArrayList<>();
+        
         connect();
         
-        String sql = "insert into publishers(name, address, email, phone_number) values (?,?,?,?)";
+        String sql = "select * from publishers where id = ?";
         try {
             statement = conn.prepareStatement(sql);
-            statement.setString(1, pub.getName());
-            statement.setString(2, pub.getAddress());
-            statement.setString(3, pub.getEmail());
-            statement.setString(4, pub.getPhone_number());
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
             
-            statement.execute();
+            while (resultSet.next()) {                
+                Publisher pub = new Publisher();
+                pub.readRecord(resultSet);
+                publisherList.add(pub);
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(PublisherCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
-    }
-    
-    public static void editLibrarian(Publishers pub, int id){
-        connect();
         
-        String sql = "update publishers set name=?, address = ?, email=?, phone_number = ? where id =?";
-        try {
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, pub.getName());
-            statement.setString(2, pub.getAddress());
-            statement.setString(3, pub.getEmail());
-            statement.setString(4, pub.getPhone_number());
-            statement.setInt(11, id);
-            
-            statement.execute();
-        } catch (SQLException ex) {
-            Logger.getLogger(PublisherCRUD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        disconnect();
+        return publisherList;
     }
 }

@@ -4,7 +4,7 @@
  */
 package com.mycompany.librarymanagement.crud;
 
-import com.mycompany.librarymanagement.module.Categories;
+import com.mycompany.librarymanagement.model.Category;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class CategoryCRUD extends BaseCRUD{
-    public static List<Categories> getList(){
-        List<Categories> dataList = new ArrayList<>();
+    public static List<Category> getlist(){
+        List<Category> categoryList = new ArrayList<>();
         
         connect();
         
@@ -28,51 +28,41 @@ public class CategoryCRUD extends BaseCRUD{
             ResultSet resultSet = statement.executeQuery();
             
             while (resultSet.next()) {                
-                Categories category = new Categories();
-                category.readRecord(resultSet);
-                dataList.add(category);
+                Category cat = new Category();
+                cat.readRecord(resultSet);
+                categoryList.add(cat);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
         
-        return dataList;
+        return categoryList;
     }
     
-    public static void addCategory(Categories category){
+    public static List<Category> getlistById(int id){
+        List<Category> categoryList = new ArrayList<>();
+        
         connect();
         
-        String sql = "insert into categories(title, located_in) values (?,?)";
+        String sql = "select * from categories where id = ?";
         try {
             statement = conn.prepareStatement(sql);
-            statement.setString(1, category.getTitle());
-            statement.setString(2, category.getLocated_in());
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
             
-            statement.execute();
+            while (resultSet.next()) {                
+                Category cat = new Category();
+                cat.readRecord(resultSet);
+                categoryList.add(cat);
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(CategoryCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
-    }
-    
-    public static void editCategory(Categories category, int id){
-        connect();
         
-        String sql = "update categories set title=?, located_in=? where id =?";
-        try {
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, category.getTitle());
-            statement.setString(2, category.getLocated_in());
-            statement.setInt(11, id);
-            
-            statement.execute();
-        } catch (SQLException ex) {
-            Logger.getLogger(CategoryCRUD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        disconnect();
+        return categoryList;
     }
 }

@@ -4,7 +4,7 @@
  */
 package com.mycompany.librarymanagement.crud;
 
-import com.mycompany.librarymanagement.module.Books;
+import com.mycompany.librarymanagement.model.Book;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class BookCRUD extends BaseCRUD{
-    public static List<Books> getList(){
-        List<Books> dataList = new ArrayList<>();
+    public static List<Book> getList(){
+        List<Book> bookList = new ArrayList<>();
         
         connect();
         
@@ -26,62 +26,43 @@ public class BookCRUD extends BaseCRUD{
         try {
             statement = conn.prepareStatement(sql);
             ResultSet resultSet = statement.executeQuery();
+            
             while (resultSet.next()) {                
-                Books book = new Books();
+                Book book = new Book();
                 book.readRecord(resultSet);
-                dataList.add(book);
+                bookList.add(book);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(BookCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
         
-        return dataList;
+        return bookList;
     }
     
-    public static void addBook(Books book){
+    public static List<Book> getListById(int id){
+        List<Book> bookList = new ArrayList<>();
+        
         connect();
         
-        String sql = "insert into books(title, category_id, publisher_id, language, author_id, quantity, lost_or_broken) values(?,?,?,?,?,?,?)";
+        String sql = "select * from books where id = ?";
         try {
             statement = conn.prepareStatement(sql);
-            statement.setString(1, book.getTitle());
-            statement.setInt(2, book.getCategory_id());
-            statement.setInt(3, book.getPublisher_id());
-            statement.setString(4, book.getLanguage());
-            statement.setInt(5, book.getAuthor_id());
-            statement.setInt(6, book.getQuantity());
-            statement.setInt(7, book.getLost_or_broken());
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
             
-            statement.execute();
+            while (resultSet.next()) {                
+                Book book = new Book();
+                book.readRecord(resultSet);
+                bookList.add(book);
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(BookCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
-    }
-    
-    public static void editBook(Books book, int id){
-        connect();
         
-        String sql = "update books set title = ?, category_id = ?, publisher_id = ?, language = ?, author_id = ?, quantity = ?, lost_or_broken = ? where id = ?";
-        try {
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, book.getTitle());
-            statement.setInt(2, book.getCategory_id());
-            statement.setInt(3, book.getPublisher_id());
-            statement.setString(4, book.getLanguage());
-            statement.setInt(5, book.getAuthor_id());
-            statement.setInt(6, book.getQuantity());
-            statement.setInt(7, book.getLost_or_broken());
-            statement.setInt(8, id);
-            
-            statement.execute();
-        } catch (SQLException ex) {
-            Logger.getLogger(BookCRUD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        disconnect();
+        return bookList;
     }
 }

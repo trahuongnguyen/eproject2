@@ -1,67 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/javafx/FXMLController.java to edit this template
- */
 package com.mycompany.librarymanagement;
 
-import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 
-/**
- * FXML Controller class
- *
- * @author Pham Tuan
- */
-public class AddcollectionController implements Initializable {
-    @FXML
-    private BorderPane bp;
-    @FXML
-    private Button home;
-    @FXML
-    private Button additem;
-    @FXML
-    private Button addcollection;
-    @FXML
-    private AnchorPane ap;
-
-    /**
-     * Initializes the controller class.
-     * @param url
-     * @param rb
-     */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
-     @FXML
-    private void home(MouseEvent event) throws IOException {
-        App.setRoot("dashboard");
-    }
+public class AddcollectionController {
 
     @FXML
-    private void additem(MouseEvent event) throws IOException {
-        App.setRoot("additem");
-    }
+    private ResourceBundle resources;
 
     @FXML
-    private void addcollection(MouseEvent event) throws IOException {
-        App.setRoot("addcollection");
-    }
-    
+    private URL location;
+
     @FXML
-    private void dashboard(MouseEvent event) throws IOException {
-        App.setRoot("dashboard");
-    }
-    
-    @FXML
-    private void library(MouseEvent event) throws IOException {
-        App.setRoot("library");
-    }
+    private Button addcollection_btn;
 }

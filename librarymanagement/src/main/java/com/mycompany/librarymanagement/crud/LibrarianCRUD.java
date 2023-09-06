@@ -4,7 +4,7 @@
  */
 package com.mycompany.librarymanagement.crud;
 
-import com.mycompany.librarymanagement.module.Librarians;
+import com.mycompany.librarymanagement.model.Librarian;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,8 +17,8 @@ import java.util.logging.Logger;
  * @author DELL
  */
 public class LibrarianCRUD extends BaseCRUD{
-    public static List<Librarians> getList(){
-        List<Librarians> dataList = new ArrayList<>();
+    public static List<Librarian> getList(){
+        List<Librarian> librarianList = new ArrayList<>();
         
         connect();
         
@@ -28,57 +28,41 @@ public class LibrarianCRUD extends BaseCRUD{
             ResultSet resultSet = statement.executeQuery();
             
             while (resultSet.next()) {                
-                Librarians libra = new Librarians();
-                libra.readRecord(resultSet);
-                dataList.add(libra);
+                Librarian librarian = new Librarian();
+                librarian.readRecord(resultSet);
+                librarianList.add(librarian);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(LibrarianCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
         
-        return dataList;
+        return librarianList;
     }
     
-    public static void addLibrarian(Librarians libra){
+    public static List<Librarian> getListById(int id){
+        List<Librarian> librarianList = new ArrayList<>();
+        
         connect();
         
-        String sql = "insert into librarians(full_name, address, phone_number, birthday, email) values (?,?,?,?,?)";
+        String sql = "select * from librarians where id = ?";
         try {
             statement = conn.prepareStatement(sql);
-            statement.setString(1, libra.getFull_name());
-            statement.setString(2, libra.getAddress());
-            statement.setString(3, libra.getPhone_number());
-            statement.setDate(4, libra.getBirthday());
-            statement.setString(5, libra.getEmail());
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
             
-            statement.execute();
+            while (resultSet.next()) {                
+                Librarian librarian = new Librarian();
+                librarian.readRecord(resultSet);
+                librarianList.add(librarian);
+            }
         } catch (SQLException ex) {
-            Logger.getLogger(LibrarianCRUD.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         disconnect();
-    }
-    
-    public static void editLibrarian(Librarians libra, int id){
-        connect();
         
-        String sql = "update Librarians set full_name=?, address = ?, phone_number=?, birthday = ?, email = ? where id =?";
-        try {
-            statement = conn.prepareStatement(sql);
-            statement.setString(1, libra.getFull_name());
-            statement.setString(2, libra.getAddress());
-            statement.setString(3, libra.getPhone_number());
-            statement.setDate(4, libra.getBirthday());
-            statement.setString(5, libra.getEmail());
-            statement.setInt(11, id);
-            
-            statement.execute();
-        } catch (SQLException ex) {
-            Logger.getLogger(LibrarianCRUD.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        disconnect();
+        return librarianList;
     }
 }

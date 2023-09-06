@@ -18,13 +18,13 @@ import java.util.logging.Logger;
 public class BaseCRUD {
     static final String DB_NAME = "librarymanagement";
     static final String DB_USERNAME = "root";
-    static final String DB_PW = "";
+    final static String DB_PW = "ht010203";
     static Connection conn = null;
     static PreparedStatement statement = null;
     
     public static void connect(){
         try {
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+DB_NAME, DB_USERNAME, DB_PW);
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + DB_NAME, DB_USERNAME, DB_PW);
         } catch (SQLException ex) {
             Logger.getLogger(BaseCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }

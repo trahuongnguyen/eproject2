@@ -7,38 +7,27 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="200.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.AddpublisherController">
    <children>
-      <Text layoutX="60.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Publisher">
+      <Separator layoutY="55.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="40.0" />
+      <Text layoutX="41.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Add Publisher" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="1.0">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="System Bold" size="26.0" />
          </font>
       </Text>
-      <Text layoutX="60.0" layoutY="80.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publisher Name">
+      <Text layoutX="40.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publisher Name">
          <font>
-            <Font size="18.0" />
+            <Font size="20.0" />
          </font>
       </Text>
-      <Separator layoutY="47.0" prefHeight="3.0" prefWidth="551.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.7999999999999545" />
-      <TextField layoutX="60.0" layoutY="90.0" prefHeight="26.0" prefWidth="420.0" promptText="Publisher Name" AnchorPane.leftAnchor="60.0" AnchorPane.rightAnchor="72.0" />
-      <Button layoutX="60.0" layoutY="400.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="99.0" text="Save" />
-      <Text layoutX="60.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email">
+      <TextField layoutX="40.0" layoutY="103.0" promptText="Publisher Name">
          <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextField layoutX="60.0" layoutY="258.0" prefHeight="26.0" prefWidth="420.0" promptText="Email" />
-      <Text layoutX="60.0" layoutY="161.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Address">
+            <Font size="20.0" />
+         </font></TextField>
+      <Button fx:id="addpublisher_btn" layoutX="40.0" layoutY="181.0" mnemonicParsing="false" text="Save" AnchorPane.leftAnchor="40.0">
          <font>
-            <Font size="18.0" />
+            <Font size="15.0" />
          </font>
-      </Text>
-      <TextField layoutX="60.0" layoutY="173.0" prefHeight="26.0" prefWidth="420.0" promptText="Address" />
-      <Text layoutX="60.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Phone Number">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Text>
-      <TextField layoutX="60.0" layoutY="347.0" prefHeight="26.0" prefWidth="420.0" promptText="Phone Number" />
+      </Button>
    </children>
 </AnchorPane>
