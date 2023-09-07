@@ -13,11 +13,8 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -71,22 +68,20 @@ public class AddborrowController implements Initializable{
             float late_fee = !latefee.getText().isEmpty()?Float.parseFloat(latefee.getText()):Float.parseFloat("");
         } catch (NumberFormatException e) {
             error = "late fee must be a number format";
-            System.out.println(error);
         }
         
         try {
             float borrow_fee = !borrowfee.getText().isEmpty()?Float.parseFloat(borrowfee.getText()):Float.parseFloat("");
         } catch (NumberFormatException e) {
             error = "borrow fee must be a number format";
-            System.out.println(error);
         }
         
         @Deprecated
         Borrow borrow = new Borrow(
                 0,
-                booktitle.getValue()!=null?booktitle.getVisibleRowCount():0,
-                member.getValue()!=null?member.getVisibleRowCount():0,
-                librarian.getValue()!=null?librarian.getVisibleRowCount():0,
+                booktitle.getValue()!=null?BookCRUD.getListByName(booktitle.getValue()).get(0).getid():0,
+                member.getValue()!=null?MemberCRUD.getListByEmail(member.getValue()).get(0).getid():0,
+                librarian.getValue()!=null?LibrarianCRUD.getListByEmail(librarian.getValue()).get(0).getid():0,
                 from.getValue()!=null ? (new Date(from.getValue().getYear(), from.getValue().getMonthValue(), from.getValue().getDayOfMonth()))+"":(new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth()))+"",
                 to.getValue()!=null ? new Date(to.getValue().getYear(), to.getValue().getMonthValue(), to.getValue().getDayOfMonth())+"":new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth())+"",
                 actualdate.getValue()!=null ? new Date(actualdate.getValue().getYear(), actualdate.getValue().getMonthValue(), actualdate.getValue().getDayOfMonth())+"":new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth())+"",
@@ -98,39 +93,30 @@ public class AddborrowController implements Initializable{
         error = null;
         if(borrow.getbook_id()<=0){
             error = "please choose book title";
-            System.out.println(error);
         }
         if (borrow.getcard_member_id()<=0) {
             error = "please choose card member";
-            System.out.println(error);
         }
         if(borrow.getlibrarian_id()<=0){
             error = "please choose librarian";
-            System.out.println(error);
         }
         if(borrow.getborrow_from_date()==null){
             error = "please choose date borrow";
-            System.out.println(error);
         }
         if(borrow.getborrow_to_date()==null){
             error = "please choose date return";
-            System.out.println(error);
         }
         if(borrow.getactual_returned_date()==null){
             error = "please choose date actual returned";
-            System.out.println(error);
         }
         if(borrow.getlate_fee() < 0){
             error = "late fee must be over or equal to 0";
-            System.out.println(error);
         }
         if(borrow.getborrow_fee()<= 0){
             error = "borrow fee must be over than 0";
-            System.out.println(error);
         }
         if(borrow.gettotal()<=0){
             error = "total fee must be over than 0";
-            System.out.println(error);
         }
         if(error==null){
             System.out.println("1");
@@ -152,19 +138,16 @@ public class AddborrowController implements Initializable{
         List<Book> bookList = BookCRUD.getList();
         for (Book book : bookList) {
             booktitle.getItems().add(book.gettitle());
-            booktitle.setVisibleRowCount(book.getid());
         }
         
         List<Member> memberList = MemberCRUD.getList();
         for (Member mem : memberList) {
             member.getItems().add(mem.getemail());
-            member.setVisibleRowCount(mem.getid());
         }
         
         List<Librarian> librarianList = LibrarianCRUD.getList();
         for (Librarian libra : librarianList) {
             librarian.getItems().add(libra.getemail());
-            librarian.setVisibleRowCount(libra.getid());
         }
     }
 }

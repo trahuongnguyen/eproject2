@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -12,7 +14,7 @@
    <children>
       <ScrollPane accessibleRole="TABLE_VIEW" fitToHeight="true" hbarPolicy="NEVER" layoutX="-2.0" layoutY="42.0" pannable="true" vbarPolicy="NEVER" vvalue="0.5" AnchorPane.leftAnchor="40.0" AnchorPane.topAnchor="42.0">
          <content>
-            <TableView fx:id="authortable" prefHeight="650.0">
+            <TableView fx:id="authortable" onMouseClicked="#displaySelectedItem" prefHeight="650.0">
               <columns>
                 <TableColumn fx:id="stt" text="STT" />
                 <TableColumn fx:id="authorname" prefWidth="250.0" text="Author Name" />
@@ -26,5 +28,29 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Text>
+      <AnchorPane fx:id="formvisible" layoutX="422.0" layoutY="147.0" prefHeight="218.0" prefWidth="318.0" visible="false">
+         <children>
+            <Text layoutX="53.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="txtauthorname" layoutX="53.0" layoutY="84.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </TextField>
+            <JFXButton layoutX="53.0" layoutY="157.0" onMouseClicked="#updateauthor" style="-fx-background-color: #eddfaf;" text="Update">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="195.0" layoutY="158.0" onMouseClicked="#deleteauthor" style="-fx-background-color: #ebdaa2;" text="Delete">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

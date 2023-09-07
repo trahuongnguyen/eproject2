@@ -65,4 +65,29 @@ public class PublisherCRUD extends BaseCRUD{
         
         return publisherList;
     }
+    
+    public static List<Publisher> getlistByName(String name){
+        List<Publisher> publisherList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from publishers where name = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, name);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Publisher pub = new Publisher();
+                pub.readRecord(resultSet);
+                publisherList.add(pub);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return publisherList;
+    }
 }

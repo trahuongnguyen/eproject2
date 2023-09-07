@@ -65,4 +65,29 @@ public class CategoryCRUD extends BaseCRUD{
         
         return categoryList;
     }
+    
+    public static List<Category> getlistByName(String title){
+        List<Category> categoryList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from categories where title = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, title);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Category cat = new Category();
+                cat.readRecord(resultSet);
+                categoryList.add(cat);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return categoryList;
+    }
 }

@@ -65,4 +65,29 @@ public class LibrarianCRUD extends BaseCRUD{
         
         return librarianList;
     }
+    
+    public static List<Librarian> getListByEmail(String email){
+        List<Librarian> librarianList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from librarians where email = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, email);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Librarian librarian = new Librarian();
+                librarian.readRecord(resultSet);
+                librarianList.add(librarian);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return librarianList;
+    }
 }

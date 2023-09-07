@@ -66,6 +66,31 @@ public class AuthorCRUD extends BaseCRUD{
         return authorList;
     }
     
+    public static List<Author> getlistByName(String name){
+        List<Author> authorList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from authors where full_name = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, name);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Author au = new Author();
+                au.readRecord(resultSet);
+                authorList.add(au);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return authorList;
+    }
+    
     public static void insert(Author author){
         connect();
         
@@ -73,6 +98,37 @@ public class AuthorCRUD extends BaseCRUD{
         try {
             statement = conn.prepareStatement(sql);
             statement.setString(1, author.getfull_name());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
+    
+    public static void update(Author author, int id){
+        connect();
+        
+        String sql = "update authors set full_name=? where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, author.getfull_name());
+            statement.setInt(2, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
+    
+    public static void delete(int id){
+        connect();
+        
+        String sql = "delete from authors where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
             statement.execute();
         } catch (SQLException ex) {
             Logger.getLogger(AuthorCRUD.class.getName()).log(Level.SEVERE, null, ex);

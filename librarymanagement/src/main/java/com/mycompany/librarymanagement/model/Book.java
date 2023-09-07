@@ -26,27 +26,41 @@ public class Book {
     IntegerProperty author_id;
     IntegerProperty quantity;
     IntegerProperty lost_or_broken;
+    StringProperty image;
 
     public Book() {
     }
 
-    public Book(IntegerProperty id, StringProperty title, IntegerProperty category_id, IntegerProperty publisher_id, StringProperty language, IntegerProperty author_id, IntegerProperty quantity, IntegerProperty lost_or_broken) {
-        this.id = id;
-        this.title = title;
-        this.category_id = category_id;
-        this.publisher_id = publisher_id;
-        this.language = language;
-        this.author_id = author_id;
-        this.quantity = quantity;
-        this.lost_or_broken = lost_or_broken;
+    public Book(int id, String title, int category_id, int publisher_id, String language, int author_id, int quantity, int lost_or_broken, String image) {
+        this.id = new SimpleIntegerProperty(id);
+        this.title = new SimpleStringProperty(title);
+        this.category_id = new SimpleIntegerProperty(category_id);
+        this.publisher_id = new SimpleIntegerProperty(publisher_id);
+        this.language = new SimpleStringProperty(language);
+        this.author_id = new SimpleIntegerProperty(author_id);
+        this.quantity = new SimpleIntegerProperty(quantity);
+        this.lost_or_broken = new SimpleIntegerProperty(lost_or_broken);
+        this.image = new SimpleStringProperty(image);
+    }
+
+    public StringProperty getProImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = new SimpleStringProperty(image);
+    }
+    
+    public String getimage(){
+        return image.get();
     }
 
     public IntegerProperty getProId() {
         return id;
     }
 
-    public void setId(IntegerProperty id) {
-        this.id = id;
+    public void setId(int id) {
+        this.id = new SimpleIntegerProperty(id);
     }
     
     public int getid(){
@@ -57,8 +71,8 @@ public class Book {
         return title;
     }
 
-    public void setTitle(StringProperty title) {
-        this.title = title;
+    public void setTitle(String title) {
+        this.title = new SimpleStringProperty(title);
     }
     
     public String gettitle(){
@@ -69,8 +83,8 @@ public class Book {
         return category_id;
     }
 
-    public void setCategory_id(IntegerProperty category_id) {
-        this.category_id = category_id;
+    public void setCategory_id(int category_id) {
+        this.category_id = new SimpleIntegerProperty(category_id);
     }
     
     public int getcategory_id(){
@@ -147,6 +161,7 @@ public class Book {
             this.author_id = new SimpleIntegerProperty(resultSet.getInt("author_id"));
             this.quantity = new SimpleIntegerProperty(resultSet.getInt("quantity"));
             this.lost_or_broken = new SimpleIntegerProperty(resultSet.getInt("lost_or_broken"));
+            this.image = new SimpleStringProperty(resultSet.getString("image"));
         } catch (SQLException ex) {
             Logger.getLogger(Book.class.getName()).log(Level.SEVERE, null, ex);
         }

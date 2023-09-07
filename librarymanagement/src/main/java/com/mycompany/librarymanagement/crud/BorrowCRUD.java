@@ -41,6 +41,31 @@ public class BorrowCRUD extends BaseCRUD{
         return borrowList;
     }
     
+    public static List<Borrow> getListByBookId(int id){
+        List<Borrow> borrowList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from borrowes where book_id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Borrow borrow = new Borrow();
+                borrow.readRecord(resultSet);
+                borrowList.add(borrow);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return borrowList;
+    }
+    
     public static void insert(Borrow borrow){
         connect();
         
@@ -62,6 +87,21 @@ public class BorrowCRUD extends BaseCRUD{
         } catch (SQLException ex) {
             Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
+        disconnect();
+    }
+    
+    public static void delete(int id){
+        connect();
+        
+        String sql = "delete from borrowes where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         disconnect();
     }
 }
