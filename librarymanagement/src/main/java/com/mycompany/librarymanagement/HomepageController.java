@@ -108,6 +108,19 @@ public class HomepageController implements Initializable {
         }
         vbox.getChildren().add(hbox);
         bottomlayout.setContent(vbox);
+        HBox hbox2 = new HBox();
+        for (int i = dataBook.size(); i > 0; i--) {
+            CardController.author = AuthorCRUD.getlistByID(dataBook.get(i-1).getauthor_id()).get(0).getfull_name();
+            try {
+                CardController.image = new Image(new FileInputStream("C:\\Users\\DELL\\Documents\\NetBeansProjects\\project\\eproject2\\librarymanagement\\target\\classes\\img\\"+dataBook.get(i-1).getimage()));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(HomepageController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("not found");
+            }
+            CardController.title = dataBook.get(i-1).gettitle();
+            hbox2.getChildren().add(getPage("card"));
+        }
+        toplayout.setContent(hbox2);
     }
     
     @FXML

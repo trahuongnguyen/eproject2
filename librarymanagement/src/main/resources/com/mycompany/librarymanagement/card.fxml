@@ -7,21 +7,21 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" spacing="15.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<HBox fx:id="box" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="185.0" prefWidth="400.0" spacing="15.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.CardController">
    <children>
-      <ImageView fx:id="image" fitHeight="155.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagebook" fitHeight="155.0" fitWidth="155.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../../img/Computer%20programming/Eloquent_JavaScript_A_Modern_Introduction_to_Programming.jpg" />
+            <Image url="@../../../img/Fiction/451_do_F.jpg" />
          </image>
       </ImageView>
       <VBox alignment="CENTER" prefHeight="186.0" prefWidth="250.0">
          <children>
-            <Label fx:id="bookName" prefHeight="67.0" prefWidth="253.0" text="451 độ F" textOverrun="CLIP">
+            <Label fx:id="booktitle" prefHeight="67.0" prefWidth="253.0" text="451 độ F" textOverrun="CLIP">
                <font>
                   <Font name="Berlin Sans FB" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="authorName" layoutX="10.0" layoutY="69.0" prefHeight="3.0" prefWidth="250.0" text="Ray Bradbury">
+            <Label fx:id="authorname" layoutX="10.0" layoutY="69.0" prefHeight="3.0" prefWidth="250.0" text="Ray Bradbury">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>

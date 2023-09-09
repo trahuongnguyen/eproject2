@@ -11,79 +11,80 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.HomepageController">
-   <children>
-      <BorderPane fx:id="mainpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <AnchorPane BorderPane.alignment="CENTER">
-               <children>
-                  <AnchorPane layoutX="180.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <AnchorPane prefHeight="60.0" prefWidth="520.0" style="-fx-background-color: #f2f0e9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-                     </children>
-                  </AnchorPane>
-                  <Pane onMouseClicked="#homepage" prefHeight="60.0" prefWidth="180.0" style="-fx-background-color: #f7f5eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <children>
-                        <Text fill="#4e4a4a" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIBRARY" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="180.0">
-                           <font>
-                              <Font size="24.0" />
-                           </font>
-                           <effect>
-                              <DropShadow />
-                           </effect>
-                        </Text>
-                     </children>
-                  </Pane>
-               </children>
-            </AnchorPane>
-         </top>
-         <left>
-            <AnchorPane prefHeight="340.0" prefWidth="30.0" style="-fx-background-color: #f7f5eb;" BorderPane.alignment="CENTER">
-               <children>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="70.0" onMouseClicked="#list" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="60.0">
-                     <image>
-                        <Image url="@../../../image/list.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="34.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="100.0">
-                     <image>
-                        <Image url="@../../../image/add.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="60.0" onMouseClicked="#changepassword" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="140.0">
-                     <image>
-                        <Image url="@../../../image/reset-password.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="13.0" layoutY="80.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5">
-                     <image>
-                        <Image url="@../../../image/logout.png" />
-                     </image>
-                  </ImageView>
-               </children>
-            </AnchorPane>
-         </left>
-         <center>
-            <BorderPane fx:id="navpane" BorderPane.alignment="CENTER">
-               <left>
-                  <AnchorPane prefHeight="340.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
-               </left>
-               <center>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <ScrollPane fx:id="toplayout" prefHeight="170.0" vbarPolicy="NEVER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                          </content>
-                        </ScrollPane>
-                        <ScrollPane fx:id="bottomlayout" layoutY="123.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
-                          <content>
-                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
-                          </content>
-                        </ScrollPane>
-                     </children></AnchorPane>
-               </center>
-            </BorderPane>
-         </center>
-      </BorderPane>
-   </children>
+    <children>
+        <BorderPane fx:id="mainpane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+                <AnchorPane BorderPane.alignment="CENTER">
+                    <children>
+                        <AnchorPane layoutX="180.0" AnchorPane.leftAnchor="180.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <AnchorPane prefHeight="60.0" prefWidth="520.0" style="-fx-background-color: #f2f0e9;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                            </children>
+                        </AnchorPane>
+                        <Pane onMouseClicked="#homepage" prefHeight="60.0" prefWidth="180.0" style="-fx-background-color: #f7f5eb;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                            <children>
+                                <Text fill="#4e4a4a" layoutY="30.0" strokeType="OUTSIDE" strokeWidth="0.0" text="LIBRARY" textAlignment="CENTER" textOrigin="CENTER" wrappingWidth="180.0">
+                                    <font>
+                                        <Font size="24.0" />
+                                    </font>
+                                    <effect>
+                                        <DropShadow />
+                                    </effect>
+                                </Text>
+                            </children>
+                        </Pane>
+                    </children>
+                </AnchorPane>
+            </top>
+            <left>
+                <AnchorPane prefHeight="340.0" prefWidth="30.0" style="-fx-background-color: #f7f5eb;" BorderPane.alignment="CENTER">
+                    <children>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="70.0" onMouseClicked="#list" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="60.0">
+                            <image>
+                                <Image url="@../../../image/list.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="34.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="100.0">
+                            <image>
+                                <Image url="@../../../image/add.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="60.0" onMouseClicked="#changepassword" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="140.0">
+                            <image>
+                                <Image url="@../../../image/reset-password.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="13.0" layoutY="80.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5">
+                            <image>
+                                <Image url="@../../../image/logout.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </AnchorPane>
+            </left>
+            <center>
+                <BorderPane fx:id="navpane" BorderPane.alignment="CENTER">
+                    <left>
+                        <AnchorPane prefHeight="340.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
+                    </left>
+                    <center>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                            <children>
+                                <ScrollPane fx:id="toplayout" prefHeight="185.0" vbarPolicy="NEVER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                                    </content>
+                                </ScrollPane>
+                                <ScrollPane fx:id="bottomlayout" layoutY="123.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="185.0">
+                                    <content>
+                                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                                    </content>
+                                </ScrollPane>
+                            </children>
+                        </AnchorPane>
+                    </center>
+                </BorderPane>
+            </center>
+        </BorderPane>
+    </children>
 </AnchorPane>
