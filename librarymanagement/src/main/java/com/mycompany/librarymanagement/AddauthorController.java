@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 public class AddauthorController implements Initializable {
@@ -24,32 +25,37 @@ public class AddauthorController implements Initializable {
 
     @FXML
     private TextField txtauthorname;
+    
+    @FXML
+    private ImageView authorerror;
 
     @FXML
     void addauthor_btn(MouseEvent event) {
-        String authorname = !txtauthorname.getText().isEmpty() ? txtauthorname.getText() : "";
+        String authorname = !txtauthorname.getText().isEmpty()&&!txtauthorname.getText().isBlank() ? txtauthorname.getText() : "";
         Author au = new Author(0, authorname);
         List<Author> authorList = AuthorCRUD.getlist();
         boolean isHave = false;
         if (!authorname.equalsIgnoreCase("")) {
+            authorerror.setVisible(false);
             for (Author author : authorList) {
                 if (author.getfull_name().equalsIgnoreCase(au.getfull_name())) {
                     isHave = true;
                     break;
                 }
             }
+        } else {
+            authorerror.setVisible(true);
         }
 
         if (!isHave) {
             AuthorCRUD.insert(au);
-            txtauthorname.setText("");
+            txtauthorname.setText(null);
         } else{
-            txtauthorname.setText("");
+            txtauthorname.setText(null);
         }
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 }

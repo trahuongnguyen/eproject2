@@ -10,7 +10,6 @@ import com.mycompany.librarymanagement.model.Librarian;
 import com.mycompany.librarymanagement.model.Member;
 import java.net.URL;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -20,9 +19,10 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-public class AddborrowController implements Initializable{
+public class AddborrowController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -61,64 +61,84 @@ public class AddborrowController implements Initializable{
     private DatePicker to;
 
     @FXML
-    void addborrow(MouseEvent event) {
+    private ImageView latefeeerror;
+
+    @FXML
+    private ImageView borrowfeeerror;
+
+    static Borrow borrow;
+
+    boolean checkerror(TextField txt, ImageView image) {
+        if (txt.getText().isEmpty()) {
+            image.setVisible(true);
+        } else {
+            try {
+                float fee = Float.parseFloat(txt.getText());
+                image.setVisible(false);
+            } catch (NumberFormatException e) {
+                image.setVisible(true);
+            }
+        }
+        return image.visibleProperty().get();
+    }
+
+    boolean validateform() {
         String error = null;
-        LocalDate date = LocalDate.now();
-        try {
-            float late_fee = !latefee.getText().isEmpty()?Float.parseFloat(latefee.getText()):Float.parseFloat("");
-        } catch (NumberFormatException e) {
-            error = "late fee must be a number format";
+        if (checkerror(latefee, latefeeerror)) {
+            error = "not in number format";
         }
-        
-        try {
-            float borrow_fee = !borrowfee.getText().isEmpty()?Float.parseFloat(borrowfee.getText()):Float.parseFloat("");
-        } catch (NumberFormatException e) {
-            error = "borrow fee must be a number format";
+        if (checkerror(borrowfee, borrowfeeerror)) {
+            error = "not in number format";
         }
-        
-        @Deprecated
-        Borrow borrow = new Borrow(
-                0,
-                booktitle.getValue()!=null?BookCRUD.getListByName(booktitle.getValue()).get(0).getid():0,
-                member.getValue()!=null?MemberCRUD.getListByEmail(member.getValue()).get(0).getid():0,
-                librarian.getValue()!=null?LibrarianCRUD.getListByEmail(librarian.getValue()).get(0).getid():0,
-                from.getValue()!=null ? (new Date(from.getValue().getYear(), from.getValue().getMonthValue(), from.getValue().getDayOfMonth()))+"":(new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth()))+"",
-                to.getValue()!=null ? new Date(to.getValue().getYear(), to.getValue().getMonthValue(), to.getValue().getDayOfMonth())+"":new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth())+"",
-                actualdate.getValue()!=null ? new Date(actualdate.getValue().getYear(), actualdate.getValue().getMonthValue(), actualdate.getValue().getDayOfMonth())+"":new Date(date.getYear(), date.getMonthValue(), date.getDayOfMonth())+"",
-                note.getText()!=null?note.getText():"",
-                !latefee.getText().isEmpty()?Float.parseFloat(latefee.getText()):0,
-                !borrowfee.getText().isEmpty()?Float.parseFloat(borrowfee.getText()):0,
-                !borrowfee.getText().isEmpty() && !latefee.getText().isEmpty()?Float.parseFloat(latefee.getText()) + Integer.parseInt(borrowfee.getText()):0
-        );
-        error = null;
-        if(borrow.getbook_id()<=0){
+        if (borrow.getbook_id() <= 0) {
             error = "please choose book title";
         }
-        if (borrow.getcard_member_id()<=0) {
+        if (borrow.getcard_member_id() <= 0) {
             error = "please choose card member";
         }
-        if(borrow.getlibrarian_id()<=0){
+        if (borrow.getlibrarian_id() <= 0) {
             error = "please choose librarian";
         }
-        if(borrow.getborrow_from_date()==null){
+        if (borrow.getborrow_from_date() == null) {
             error = "please choose date borrow";
         }
-        if(borrow.getborrow_to_date()==null){
+        if (borrow.getborrow_to_date() == null) {
             error = "please choose date return";
         }
-        if(borrow.getactual_returned_date()==null){
+        if (borrow.getactual_returned_date() == null) {
             error = "please choose date actual returned";
         }
-        if(borrow.getlate_fee() < 0){
+        if (borrow.getlate_fee() < 0) {
             error = "late fee must be over or equal to 0";
         }
-        if(borrow.getborrow_fee()<= 0){
+        if (borrow.getborrow_fee() <= 0) {
             error = "borrow fee must be over than 0";
         }
-        if(borrow.gettotal()<=0){
+        if (borrow.gettotal() <= 0) {
             error = "total fee must be over than 0";
         }
-        if(error==null){
+        return error == null;
+    }
+
+    @FXML
+    void addborrow(MouseEvent event) {
+        LocalDate date = LocalDate.now();
+
+        borrow = new Borrow(
+                0,
+                booktitle.getValue() != null ? BookCRUD.getListByName(booktitle.getValue()).get(0).getid() : 0,
+                member.getValue() != null ? MemberCRUD.getListByEmail(member.getValue()).get(0).getid() : 0,
+                librarian.getValue() != null ? LibrarianCRUD.getListByEmail(librarian.getValue()).get(0).getid() : 0,
+                from.getValue() != null ? (from.getValue().getYear() + "-" + from.getValue().getMonthValue() + "-" + from.getValue().getDayOfMonth()) : (date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth()),
+                to.getValue() != null ? to.getValue().getYear() + "-" + to.getValue().getMonthValue() + "-" + to.getValue().getDayOfMonth() : date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth(),
+                actualdate.getValue() != null ?(actualdate.getValue().getYear() + "-" + actualdate.getValue().getMonthValue() + "-" + actualdate.getValue().getDayOfMonth()) : date.getYear() + "-" + date.getMonthValue() + "-" + date.getDayOfMonth(),
+                note.getText() != null ? note.getText() : "",
+                !checkerror(latefee, latefeeerror) ? Float.parseFloat(latefee.getText()) : 0,
+                !checkerror(borrowfee, borrowfeeerror) ? Float.parseFloat(borrowfee.getText()) : 0,
+                !checkerror(latefee, latefeeerror) && !checkerror(borrowfee, borrowfeeerror) ? Float.parseFloat(latefee.getText()) + Float.parseFloat(borrowfee.getText()) : 0
+        );
+
+        if (validateform()) {
             System.out.println("1");
             BorrowCRUD.insert(borrow);
             System.out.println("2");
@@ -139,12 +159,12 @@ public class AddborrowController implements Initializable{
         for (Book book : bookList) {
             booktitle.getItems().add(book.gettitle());
         }
-        
+
         List<Member> memberList = MemberCRUD.getList();
         for (Member mem : memberList) {
             member.getItems().add(mem.getemail());
         }
-        
+
         List<Librarian> librarianList = LibrarianCRUD.getList();
         for (Librarian libra : librarianList) {
             librarian.getItems().add(libra.getemail());

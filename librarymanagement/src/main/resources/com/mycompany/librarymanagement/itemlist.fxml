@@ -86,7 +86,7 @@
                </font>
             </Text>
             <TextField fx:id="txtimage" layoutX="109.0" layoutY="275.0" AnchorPane.leftAnchor="192.0" AnchorPane.topAnchor="330.0" />
-            <JFXButton layoutX="14.0" layoutY="351.0" onMouseClicked="#updateitem" style="-fx-background-color: #eddfaf#eddfaf;" text="Update" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="380.0">
+            <JFXButton layoutX="14.0" layoutY="351.0" onMouseClicked="#updateitem" style="-fx-background-color: #eddfaf;" text="Update" AnchorPane.leftAnchor="65.0" AnchorPane.topAnchor="380.0">
                <font>
                   <Font size="16.0" />
                </font>

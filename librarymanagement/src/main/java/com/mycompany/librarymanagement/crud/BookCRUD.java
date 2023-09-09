@@ -153,4 +153,26 @@ public class BookCRUD extends BaseCRUD{
         
         disconnect();
     }
+    
+    public static void insert(Book book){
+        connect();
+        
+        String sql = "insert into books(title, category_id, publisher_id, language, author_id, quantity, lost_or_broken, image) values(?,?,?,?,?,?,?,?)";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, book.gettitle());
+            statement.setInt(2, book.getcategory_id());
+            statement.setInt(3, book.getpublisher_id());
+            statement.setString(4, book.getlanguage());
+            statement.setInt(5, book.getauthor_id());
+            statement.setInt(6, book.getquantity());
+            statement.setInt(7, book.getlost_or_broken());
+            statement.setString(8, book.getimage());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(BookCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

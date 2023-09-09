@@ -5,10 +5,9 @@
 package com.mycompany.librarymanagement;
 
 import com.mycompany.librarymanagement.crud.AdminCRUD;
-import com.mycompany.librarymanagement.crud.BaseCRUD;
+import com.mycompany.librarymanagement.model.Admin;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -43,12 +42,14 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
-
+    
+    static Admin admin;
     @FXML
     private void login(ActionEvent event) throws IOException {
         
         if (usernameTextField.getText().isBlank() == false && passwordField.getText().isBlank() == false) {
-            if (AdminCRUD.login(usernameTextField.getText(), passwordField.getText())) {
+            admin = AdminCRUD.login(usernameTextField.getText(), passwordField.getText());
+            if (admin!=null) {
                 App.setRoot("homepage");
             }else{
                 usernameMessageLable.setText("Tài khoản không chính xác.");

@@ -39,10 +39,10 @@ public class AuthorlistController implements Initializable {
 
     @FXML
     private TableColumn<Author, String> stt;
-    
+
     @FXML
     private AnchorPane formvisible;
-    
+
     @FXML
     private TextField txtauthorname;
 
@@ -50,45 +50,48 @@ public class AuthorlistController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         initialize();
     }
-    
-    void initialize(){
+
+    void initialize() {
         List<Author> dataList = AuthorCRUD.getlist();
         ObservableList<Author> authorlist = FXCollections.observableArrayList(dataList);
-        authorname.setCellValueFactory((TableColumn.CellDataFeatures<Author, String> author) -> author.getValue().getProFull_name());
-        stt.setCellValueFactory(new Callback<CellDataFeatures<Author, String>, ObservableValue<String>>() {
-            @Override
-            public ObservableValue<String> call(CellDataFeatures<Author, String> p) {
-                return new ReadOnlyObjectWrapper(authortable.getItems().indexOf(p.getValue()) + 1);
-            }
-        });
+        authorname.setCellValueFactory((CellDataFeatures<Author, String> param) -> param.getValue().getProFull_name());
+        stt.setCellValueFactory((CellDataFeatures<Author, String> p) -> new ReadOnlyObjectWrapper(authortable.getItems().indexOf(p.getValue()) + 1));
         authortable.setItems(authorlist);
     }
     
+    void resetForm(){
+        txtauthorname.setText("");
+    }
+
     @FXML
-    void displaySelectedItem(MouseEvent event){
-        if(authortable.getSelectionModel().getSelectedItem()!=null){
+    void displaySelectedItem(MouseEvent event) {
+        if (authortable.getSelectionModel().getSelectedItem() != null) {
             author = new Author(AuthorCRUD.getlistByName(authortable.getSelectionModel().getSelectedItem().getfull_name()).get(0).getid(), authortable.getSelectionModel().getSelectedItem().getfull_name());
             formvisible.setVisible(true);
             txtauthorname.setText(authortable.getSelectionModel().getSelectedItem().getfull_name());
         }
     }
-    
+
     static Author author;
-    
+
     @FXML
-    void updateauthor(MouseEvent event){
-        Author au = new Author(author.getid(), txtauthorname.getText());
-        AuthorCRUD.update(au, author.getid());
-        initialize();
+    void updateauthor(MouseEvent event) {
+        String auname = !txtauthorname.getText().isEmpty()?txtauthorname.getText():"";
+        if (!auname.equalsIgnoreCase("")) {
+            Author au = new Author(author.getid(), auname);
+            AuthorCRUD.update(au, author.getid());
+            resetForm();
+            initialize();
+        }
     }
-    
+
     @FXML
-    void deleteauthor(MouseEvent event){
+    void deleteauthor(MouseEvent event) {
         List<Book> bookList = BookCRUD.getListByAuthorId(author.getid());
-        if(bookList.size()>0){
+        if (bookList.size() > 0) {
             for (Book book : bookList) {
                 List<Borrow> borrowList = BorrowCRUD.getListByBookId(book.getid());
-                if(borrowList.size()>0){
+                if (borrowList.size() > 0) {
                     for (Borrow borrow : borrowList) {
                         BorrowCRUD.delete(borrow.getid());
                     }
@@ -98,5 +101,7 @@ public class AuthorlistController implements Initializable {
         }
         AuthorCRUD.delete(author.getid());
         initialize();
+        resetForm();
+        formvisible.setVisible(false);
     }
 }

@@ -4,6 +4,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -21,41 +23,77 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="97.0" layoutY="61.0" promptText="Book Title" />
+      <TextField fx:id="txttitle" layoutX="97.0" layoutY="61.0" promptText="Book Title" />
       <Text layoutX="40.0" layoutY="123.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <ComboBox layoutX="136.0" layoutY="102.0" prefWidth="150.0" promptText="Choose Category" />
+      <ComboBox fx:id="choosecategory" layoutX="136.0" layoutY="102.0" prefWidth="150.0" promptText="Choose Category" />
       <Text layoutX="40.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Publisher" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <ComboBox layoutX="136.0" layoutY="143.0" prefWidth="150.0" promptText="Choose Publisher" />
+      <ComboBox fx:id="choosepublisher" layoutX="136.0" layoutY="143.0" prefWidth="150.0" promptText="Choose Publisher" />
       <Text layoutX="40.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <ComboBox layoutX="136.0" layoutY="184.0" prefWidth="150.0" promptText="Choose Author" />
+      <ComboBox fx:id="chooseauthor" layoutX="136.0" layoutY="184.0" prefWidth="150.0" promptText="Choose Author" />
       <Text layoutX="40.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Language" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="137.0" layoutY="226.0" promptText="Language" />
+      <TextField fx:id="txtlanguage" layoutX="137.0" layoutY="226.0" promptText="Language" />
       <Text layoutX="268.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Quantity">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="355.0" layoutY="61.0" promptText="Quantity" AnchorPane.leftAnchor="355.0" />
-      <Button fx:id="additem_btn" layoutX="44.0" layoutY="284.0" mnemonicParsing="false" text="Save" AnchorPane.leftAnchor="40.0">
+      <TextField fx:id="txtquantity" layoutX="355.0" layoutY="61.0" promptText="Quantity" AnchorPane.leftAnchor="355.0" />
+      <Button fx:id="additem_btn" layoutX="40.0" layoutY="330.0" mnemonicParsing="false" onMouseClicked="#additem" text="Save" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="15.0" />
          </font>
       </Button>
+      <Text layoutX="40.0" layoutY="287.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Image" AnchorPane.leftAnchor="40.0">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txtimage" layoutX="120.0" layoutY="266.0" promptText="Image" />
+      <ImageView fx:id="errortitle" fitHeight="20.0" fitWidth="20.0" layoutX="223.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorcategory" fitHeight="20.0" fitWidth="20.0" layoutX="296.0" layoutY="105.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorpublisher" fitHeight="20.0" fitWidth="20.0" layoutX="296.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorauthor" fitHeight="20.0" fitWidth="20.0" layoutX="296.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorlanguage" fitHeight="20.0" fitWidth="20.0" layoutX="263.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorquantity" fitHeight="20.0" fitWidth="20.0" layoutX="482.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -94,4 +94,24 @@ public class MemberCRUD {
         
         return memberList;
     }
+    
+    public static void insert(Member member){
+        connect();
+        
+        String sql = "insert into card_members(full_name, phone_number, address, birthday, due_date, email) values(?,?,?,?,?,?)";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, member.getfull_name());
+            statement.setString(2, member.getphone_number());
+            statement.setString(3, member.getaddress());
+            statement.setString(4, member.getbirthday());
+            statement.setString(5, member.getdue_date());
+            statement.setString(6, member.getemail());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

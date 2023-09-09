@@ -90,6 +90,31 @@ public class BorrowCRUD extends BaseCRUD{
         disconnect();
     }
     
+    public static void update(Borrow borrow, int id){
+        connect();
+        
+        String sql = "update borrowes set book_id = ?, card_member_id = ?, librarian_id = ?, borrow_from_date = ?, borrow_to_date = ?, actual_returned_date = ?, other_note = ?, late_fee = ?, borrow_fee = ?, total = ? where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, borrow.getbook_id());
+            statement.setInt(2, borrow.getcard_member_id());
+            statement.setInt(3, borrow.getlibrarian_id());
+            statement.setString(4, borrow.getborrow_from_date());
+            statement.setString(5,  borrow.getborrow_to_date());
+            statement.setString(6, borrow.getactual_returned_date());
+            statement.setString(7, borrow.getother_note());
+            statement.setFloat(8, borrow.getlate_fee());
+            statement.setFloat(9, borrow.getborrow_fee());
+            statement.setFloat(10, borrow.gettotal());
+            statement.setInt(11, id);
+            
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        disconnect();
+    }
+    
     public static void delete(int id){
         connect();
         

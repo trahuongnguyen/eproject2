@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -37,88 +36,52 @@
                </children>
             </AnchorPane>
          </top>
+         <left>
+            <AnchorPane prefHeight="340.0" prefWidth="30.0" style="-fx-background-color: #f7f5eb;" BorderPane.alignment="CENTER">
+               <children>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="70.0" onMouseClicked="#list" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="60.0">
+                     <image>
+                        <Image url="@../../../image/list.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="34.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="100.0">
+                     <image>
+                        <Image url="@../../../image/add.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="60.0" onMouseClicked="#changepassword" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="140.0">
+                     <image>
+                        <Image url="@../../../image/reset-password.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="13.0" layoutY="80.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5">
+                     <image>
+                        <Image url="@../../../image/logout.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+         </left>
          <center>
             <BorderPane fx:id="navpane" BorderPane.alignment="CENTER">
-               <center>
-                  <BorderPane fx:id="sidepane">
-                     <left>
-                        <AnchorPane style="-fx-background-color: #f2f0e9;" BorderPane.alignment="CENTER">
-                           <children>
-                              <JFXButton layoutX="3.0" layoutY="14.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#itemlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="BLACK" style="-fx-background-color: #f2f0e9;" text="Item List" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton layoutY="54.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#collectionlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Collection" AnchorPane.leftAnchor="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton layoutY="94.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#authorlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Author">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton layoutY="134.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#publisherlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Publisher" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton layoutY="174.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#borrowlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Borrow" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton layoutX="1.0" layoutY="214.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#librarianlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Librarian" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </JFXButton>
-                              <JFXButton layoutX="2.0" layoutY="254.0" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#memberlist" prefHeight="40.0" prefWidth="150.0" ripplerFill="WHITE" style="-fx-background-color: #f2f0e9;" text="Member" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-                                 <font>
-                                    <Font size="18.0" />
-                                 </font>
-                              </JFXButton>
-                           </children>
-                           <effect>
-                              <InnerShadow />
-                           </effect>
-                        </AnchorPane>
-                     </left>
-                     <center>
-                        <BorderPane fx:id="viewpane" BorderPane.alignment="CENTER">
-                           <center>
-                              <AnchorPane BorderPane.alignment="CENTER" />
-                           </center></BorderPane>
-                     </center>
-                  </BorderPane>
-               </center>
                <left>
-                  <AnchorPane maxWidth="-Infinity" minWidth="-Infinity" prefHeight="340.0" prefWidth="30.0" style="-fx-background-color: #f7f5eb;" BorderPane.alignment="CENTER">
-                     <children>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="70.0" onMouseClicked="#list" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="60.0">
-                           <image>
-                              <Image url="@../../../image/list.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="2.0" layoutY="34.0" onMouseClicked="#add" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="100.0">
-                           <image>
-                              <Image url="@../../../image/add.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="1.0" layoutY="60.0" onMouseClicked="#changepassword" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5" AnchorPane.topAnchor="140.0">
-                           <image>
-                              <Image url="@../../../image/reset-password.png" />
-                           </image>
-                        </ImageView>
-                        <ImageView fitHeight="25.0" fitWidth="25.0" layoutX="13.0" layoutY="80.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="2.5" AnchorPane.rightAnchor="2.5">
-                           <image>
-                              <Image url="@../../../image/logout.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
+                  <AnchorPane prefHeight="340.0" prefWidth="150.0" BorderPane.alignment="CENTER" />
                </left>
+               <center>
+                  <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <ScrollPane fx:id="toplayout" prefHeight="170.0" vbarPolicy="NEVER" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                          </content>
+                        </ScrollPane>
+                        <ScrollPane fx:id="bottomlayout" layoutY="123.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="170.0">
+                          <content>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="200.0" />
+                          </content>
+                        </ScrollPane>
+                     </children></AnchorPane>
+               </center>
             </BorderPane>
          </center>
       </BorderPane>

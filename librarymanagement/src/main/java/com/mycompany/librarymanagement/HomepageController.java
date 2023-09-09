@@ -1,15 +1,28 @@
 package com.mycompany.librarymanagement;
 
+import com.mycompany.librarymanagement.crud.AuthorCRUD;
+import com.mycompany.librarymanagement.crud.BookCRUD;
+import com.mycompany.librarymanagement.model.Book;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.control.ScrollPane;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
-public class HomepageController {
+public class HomepageController implements Initializable {
 
     @FXML
     private ResourceBundle resources;
@@ -19,38 +32,23 @@ public class HomepageController {
 
     @FXML
     private BorderPane mainpane;
-
+    
     @FXML
     private BorderPane navpane;
 
-    @FXML
-    private BorderPane sidepane;
-    
-    @FXML
-    private BorderPane viewpane;
+    static BorderPane mainpanestatic;
+    static BorderPane navpanestatic;
 
     @FXML
     void add(MouseEvent event) {
         Pane view = getPage("add");
-        navpane.setCenter(view);
-    }
-
-    @FXML
-    void authorlist(MouseEvent event) {
-        Pane view = getPage("authorlist");
-        sidepane.setCenter(view);
+        navpane.setLeft(view);
     }
 
     @FXML
     void changepassword(MouseEvent event) {
         Pane view = getPage("changepassword");
-        viewpane.setCenter(view);
-    }
-
-    @FXML
-    void collectionlist(MouseEvent event) {
-        Pane view = getPage("collectionlist");
-        sidepane.setCenter(view);
+        navpane.setCenter(view);
     }
 
     @FXML
@@ -59,15 +57,9 @@ public class HomepageController {
     }
 
     @FXML
-    void itemlist(MouseEvent event) {
-        Pane view = getPage("itemlist");
-        sidepane.setCenter(view);
-    }
-
-    @FXML
     void list(MouseEvent event) {
         Pane view = getPage("list");
-        navpane.setCenter(view);
+        navpane.setLeft(view);
     }
 
     @FXML
@@ -75,34 +67,9 @@ public class HomepageController {
         App.setRoot("login");
     }
 
-    @FXML
-    void publisherlist(MouseEvent event) {
-        Pane view = getPage("publisherlist");
-        sidepane.setCenter(view);
-    }
-    
-    @FXML
-    void librarianlist(MouseEvent event) {
-        Pane view = getPage("librarianlist");
-        sidepane.setCenter(view);
-    }
-    
-    @FXML
-    void borrowlist(MouseEvent event) {
-        Pane view = getPage("borrowlist");
-        sidepane.setCenter(view);
-    }
-    
-    @FXML
-    void memberlist(MouseEvent event) {
-        Pane view = getPage("memberlist");
-        sidepane.setCenter(view);
-    }
-    
     public Pane view;
 
     public Pane getPage(String fileName) {
-
         try {
             URL fileURL = App.class.getResource(fileName + ".fxml");
             if (fileURL == null) {
@@ -114,4 +81,38 @@ public class HomepageController {
         }
         return view;
     }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        mainpanestatic = mainpane;
+        navpanestatic = navpane;
+        Pane pane = getPage("list");
+        navpane.setLeft(pane);
+        List<Book> dataBook = BookCRUD.getList();
+        HBox hbox = new HBox();
+        VBox vbox = new VBox();
+        for (Book book : dataBook) {
+            BookController.author = AuthorCRUD.getlistByID(book.getauthor_id()).get(0).getfull_name();
+            try {
+                BookController.image = new Image(new FileInputStream("C:\\Users\\DELL\\Documents\\NetBeansProjects\\project\\eproject2\\librarymanagement\\target\\classes\\img\\"+book.getimage()));
+            } catch (FileNotFoundException ex) {
+                Logger.getLogger(HomepageController.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println("not found");
+            }
+            BookController.title = book.gettitle();
+            hbox.getChildren().add(getPage("book"));
+            if(hbox.getChildren().size()==10){
+                vbox.getChildren().add(hbox);
+                hbox = new HBox();
+            }
+        }
+        vbox.getChildren().add(hbox);
+        bottomlayout.setContent(vbox);
+    }
+    
+    @FXML
+    private ScrollPane toplayout;
+    
+    @FXML
+    private ScrollPane bottomlayout;
 }

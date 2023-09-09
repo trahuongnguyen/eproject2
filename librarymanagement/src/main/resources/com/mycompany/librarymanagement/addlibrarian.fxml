@@ -4,6 +4,8 @@
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -21,12 +23,12 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="144.0" layoutY="59.0" promptText="Full Name">
+      <TextField fx:id="txtfullname" layoutX="144.0" layoutY="59.0" promptText="Full Name">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
-      <Button fx:id="addlibrarian_btn" layoutX="38.0" layoutY="291.0" mnemonicParsing="false" text="Save" AnchorPane.leftAnchor="40.0">
+      <Button fx:id="addlibrarian_btn" layoutX="38.0" layoutY="291.0" mnemonicParsing="false" onMouseClicked="#addlibrarian" text="Save" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="15.0" />
          </font>
@@ -36,7 +38,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="125.0" layoutY="102.0" promptText="Address">
+      <TextField fx:id="txtaddress" layoutX="125.0" layoutY="102.0" promptText="Address">
          <font>
             <Font size="14.0" />
          </font>
@@ -46,7 +48,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="191.0" layoutY="145.0" promptText="Phone Number">
+      <TextField fx:id="txtphone" layoutX="191.0" layoutY="145.0" promptText="Phone Number">
          <font>
             <Font size="14.0" />
          </font>
@@ -56,16 +58,41 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <DatePicker layoutX="124.0" layoutY="190.0" promptText="Birthday" />
+      <DatePicker fx:id="txtbirthday" layoutX="124.0" layoutY="190.0" promptText="Birthday" />
       <Text layoutX="40.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField layoutX="104.0" layoutY="231.0" promptText="Email">
+      <TextField fx:id="txtemail" layoutX="104.0" layoutY="231.0" promptText="Email">
          <font>
             <Font size="14.0" />
          </font>
       </TextField>
+      <ImageView fx:id="errorfullname" fitHeight="20.0" fitWidth="20.0" layoutX="293.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="erroraddress" fitHeight="20.0" fitWidth="20.0" layoutX="274.0" layoutY="107.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorphone" fitHeight="20.0" fitWidth="20.0" layoutX="340.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="errorbirthday" fitHeight="20.0" fitWidth="20.0" layoutX="308.0" layoutY="193.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="erroremail" fitHeight="20.0" fitWidth="20.0" layoutX="253.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

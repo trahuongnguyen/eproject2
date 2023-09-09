@@ -90,4 +90,19 @@ public class PublisherCRUD extends BaseCRUD{
         
         return publisherList;
     }
+    
+    public static void insert(Publisher publisher){
+        connect();
+        
+        String sql = "insert into publishers(name) values(?)";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, publisher.getname());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(PublisherCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

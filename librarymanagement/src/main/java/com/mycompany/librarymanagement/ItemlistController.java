@@ -176,16 +176,17 @@ public class ItemlistController implements Initializable{
     void updateitem(MouseEvent event){
         Book bo = new Book(
                 book.getid(), 
-                txtbooktitle.getText(), 
-                CategoryCRUD.getlistByName(choosecategory.getValue()).get(0).getid(), 
-                PublisherCRUD.getlistByName(choosepublisher.getValue()).get(0).getid(), 
-                txtlanguage.getText(), 
-                AuthorCRUD.getlistByName(chooseauthor.getValue()).get(0).getid(), 
-                Integer.parseInt(txtquantity.getText()), 
-                Integer.parseInt(txtlost_or_broken.getText()), 
-                txtimage.getText()
+                !txtbooktitle.getText().equalsIgnoreCase("")&&!txtbooktitle.getText().isEmpty()?txtbooktitle.getText():itemtable.getSelectionModel().getSelectedItem().getBook().gettitle(), 
+                choosecategory.getValue()!=null?CategoryCRUD.getlistByName(choosecategory.getValue()).get(0).getid():itemtable.getSelectionModel().getSelectedItem().getBook().getcategory_id(), 
+                choosepublisher.getValue()!=null?PublisherCRUD.getlistByName(choosepublisher.getValue()).get(0).getid():itemtable.getSelectionModel().getSelectedItem().getBook().getpublisher_id(), 
+                !txtlanguage.getText().equalsIgnoreCase("")&&!txtlanguage.getText().isEmpty()?txtlanguage.getText():itemtable.getSelectionModel().getSelectedItem().getBook().getlanguage(), 
+                chooseauthor.getValue()!=null?AuthorCRUD.getlistByName(chooseauthor.getValue()).get(0).getid():itemtable.getSelectionModel().getSelectedItem().getBook().getauthor_id(), 
+                validateform(txtquantity)?Integer.parseInt(txtquantity.getText()):itemtable.getSelectionModel().getSelectedItem().getBook().getquantity(), 
+                validateform(txtlost_or_broken)?Integer.parseInt(txtlost_or_broken.getText()):itemtable.getSelectionModel().getSelectedItem().getBook().getlost_or_broken(), 
+                !txtimage.getText().equalsIgnoreCase("")&&!txtimage.getText().isEmpty()?txtimage.getText():itemtable.getSelectionModel().getSelectedItem().getBook().getimage()
         );
         BookCRUD.update(bo, book.getid());
+        formvisible.setVisible(false);
         initialize();
     }
     
@@ -198,14 +199,25 @@ public class ItemlistController implements Initializable{
             }
         }
         BookCRUD.deleteBook(book.getid());
+        formvisible.setVisible(false);
         initialize();
+    }
+    
+    boolean validateform(TextField txt){
+        int num;
+        try {
+            num = Integer.parseInt(txt.getText());
+        } catch (NumberFormatException e) {
+            return false;
+        }
+        return true;
     }
     
     @FXML
     void displaySeletedItem(MouseEvent event){
         BookInfo b = itemtable.getSelectionModel().getSelectedItem();
         if(b!=null){
-            List<Book> itemList = BookCRUD.getListByName(b.getBook().gettitle());
+            List<Book> itemList = BookCRUD.getListById(b.getBook().getid());
             book = new Book(
                     itemList.get(0).getid(), 
                     b.getBook().gettitle(), 

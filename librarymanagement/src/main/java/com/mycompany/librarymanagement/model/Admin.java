@@ -16,6 +16,7 @@ import javafx.beans.property.StringProperty;
  * @author Pham Tuan
  */
 public class Admin {
+
     int id;
     String username;
     String password;
@@ -73,14 +74,14 @@ public class Admin {
         this.address = address;
     }
 
-    
-
     @Override
     public String toString() {
         return "Admin{" + "id=" + id + ", username=" + username + ", password=" + password + ", email=" + email + ", address=" + address + '}';
     }
-     public void readRecord(ResultSet resultSet){
+
+    public void readRecord(ResultSet resultSet) {
         try {
+            this.id = resultSet.getInt("id");
             this.username = resultSet.getString("username");
             this.password = resultSet.getString("password");
             this.email = resultSet.getString("email");
@@ -89,5 +90,5 @@ public class Admin {
             Logger.getLogger(Admin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
 }

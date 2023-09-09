@@ -5,11 +5,13 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class ListController {
+public class ListController implements Initializable{
 
     @FXML
     private ResourceBundle resources;
@@ -18,48 +20,50 @@ public class ListController {
     private URL location;
 
     @FXML
-    private BorderPane sidepane;
+    private AnchorPane sidepane;
+    
+    static AnchorPane mainpane;
 
     @FXML
     void authorlist(MouseEvent event) {
         Pane view = getPage("authorlist");
-        sidepane.setCenter(view);
+        HomepageController.navpanestatic.setCenter(view);
     }
     
     @FXML
     void borrowlist(MouseEvent event) {
         Pane view = getPage("borrowlist");
-        sidepane.setCenter(view);
+        HomepageController.navpanestatic.setCenter(view);
     }
     
     @FXML
     void librarianlist(MouseEvent event) {
         Pane view = getPage("librarianlist");
-        sidepane.setCenter(view);
+        HomepageController.navpanestatic.setCenter(view);
     }
     
     @FXML
     void memberlist(MouseEvent event) {
         Pane view = getPage("memberlist");
-        sidepane.setCenter(view);
+        HomepageController.navpanestatic.setCenter(view);
     }
 
     @FXML
     void collectionlist(MouseEvent event) {
         Pane view = getPage("collectionlist");
-        sidepane.setCenter(view);
+        HomepageController.navpanestatic.setCenter(view);
     }
 
     @FXML
     void itemlist(MouseEvent event) {
         Pane view = getPage("itemlist");
-        sidepane.setCenter(view);
+        HomepageController.navpanestatic.setCenter(view);
     }
 
     @FXML
     void publisherlist(MouseEvent event) {
         Pane view = getPage("publisherlist");
-        sidepane.setCenter(view);
+        HomepageController.navpanestatic.setCenter(view);
     }
 
     public Pane view;
@@ -78,4 +82,8 @@ public class ListController {
         return view;
     }
 
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        mainpane = sidepane;
+    }
 }

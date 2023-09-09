@@ -90,4 +90,20 @@ public class CategoryCRUD extends BaseCRUD{
         
         return categoryList;
     }
+    
+    public static void insert(Category category){
+        connect();
+        
+        String sql = "insert into categories(title, located_in) values(?,?)";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, category.gettitle());
+            statement.setString(2, category.getlocated_in());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

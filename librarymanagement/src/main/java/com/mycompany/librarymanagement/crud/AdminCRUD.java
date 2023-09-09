@@ -7,6 +7,8 @@ package com.mycompany.librarymanagement.crud;
 import com.mycompany.librarymanagement.model.Admin;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,7 +17,7 @@ import java.util.logging.Logger;
  * @author Pham Tuan
  */
 public class AdminCRUD extends BaseCRUD{
-    public static boolean login(String username, String password){
+    public static Admin login(String username, String password){
         Admin admin = null;
         connect();
         
@@ -33,23 +35,37 @@ public class AdminCRUD extends BaseCRUD{
             Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        disconnect();
-        if(admin!=null){
-            return true;
+        String sql1 = "select * from admin where email = ? and password = ?";
+        try {
+            statement = conn.prepareStatement(sql1);
+            statement.setString(1, username);
+            statement.setString(2, password);
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                admin = new Admin();
+                admin.readRecord(resultSet);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(AdminCRUD.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return false;
+        
+        disconnect();
+        return admin;
     }
     
-    public static void addAdmin(Admin admin){
+    public static List<Admin> getList(){
+        List<Admin> adminList = new ArrayList<>();
         connect();
         
-        String sql = "insert into admin(username, password, email, address) values (?,?,?,?)";
+        String sql = "select * from admin";
         try {
             statement = conn.prepareStatement(sql);
-            statement.setString(1, admin.getUsername());
-            statement.setString(2, admin.getPassword());
-            statement.setString(3, admin.getEmail());
-            statement.setString(4, admin.getAddress());
+            ResultSet resultSet = statement.executeQuery();
+            if(resultSet.next()){
+                Admin admin = new Admin();
+                admin.readRecord(resultSet);
+                adminList.add(admin);
+            }
             
             statement.execute();
         } catch (SQLException ex) {
@@ -57,12 +73,13 @@ public class AdminCRUD extends BaseCRUD{
         }
         
         disconnect();
+        return adminList;
     }
     
     public static void changePassword(Admin admin, String password){
         connect();
         
-        String sql = "update Admin set password = ? where username = ?";
+        String sql = "update admin set password = ? where username = ?";
         try {
             statement = conn.prepareStatement(sql);
             statement.setString(1, password);
