@@ -11,7 +11,11 @@
    <children>
       <ImageView fx:id="imagebook" fitHeight="240.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
          <image>
+<<<<<<< HEAD
             <Image url="@../../../img/Fiction/Crook_Manifesto.jpg" />
+=======
+            <Image url="@../../../../../../../img/Computer%20programming/Refactoring.jpg" />
+>>>>>>> d46f103efd1a36055a07d2fe01cd9e3c251cd3b2
          </image>
       </ImageView>
       <VBox prefHeight="200.0" prefWidth="100.0">
