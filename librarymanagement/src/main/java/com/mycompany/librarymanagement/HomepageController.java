@@ -93,12 +93,7 @@ public class HomepageController implements Initializable {
         VBox vbox = new VBox();
         for (Book book : dataBook) {
             BookController.author = AuthorCRUD.getlistByID(book.getauthor_id()).get(0).getfull_name();
-            try {
-                BookController.image = new Image(new FileInputStream("C:\\Users\\DELL\\Documents\\NetBeansProjects\\project\\eproject2\\librarymanagement\\target\\classes\\img\\"+book.getimage()));
-            } catch (FileNotFoundException ex) {
-                Logger.getLogger(HomepageController.class.getName()).log(Level.SEVERE, null, ex);
-                System.out.println("not found");
-            }
+            BookController.image = new Image(App.class.getResourceAsStream("/img/"+book.getimage()));
             BookController.title = book.gettitle();
             hbox.getChildren().add(getPage("book"));
             if(hbox.getChildren().size()==10){

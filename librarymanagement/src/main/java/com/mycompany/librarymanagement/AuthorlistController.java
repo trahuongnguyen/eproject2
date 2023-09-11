@@ -59,6 +59,7 @@ public class AuthorlistController implements Initializable {
     
     void resetForm(){
         txtauthorname.setText("");
+        formvisible.setVisible(false);
     }
 
     @FXML
@@ -100,6 +101,5 @@ public class AuthorlistController implements Initializable {
         AuthorCRUD.delete(author.getid());
         initialize();
         resetForm();
-        formvisible.setVisible(false);
     }
 }

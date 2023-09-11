@@ -186,8 +186,20 @@ public class ItemlistController implements Initializable{
                 !txtimage.getText().equalsIgnoreCase("")&&!txtimage.getText().isEmpty()?txtimage.getText():itemtable.getSelectionModel().getSelectedItem().getBook().getimage()
         );
         BookCRUD.update(bo, book.getid());
-        formvisible.setVisible(false);
+        resetform();
         initialize();
+    }
+    
+    void resetform(){
+        txtbooktitle.setText(null);
+        choosecategory.setValue(null);
+        choosepublisher.setValue(null);
+        txtlanguage.setText(null);
+        chooseauthor.setValue(null);
+        txtquantity.setText(null);
+        txtlost_or_broken.setText(null);
+        txtimage.setText(null);
+        formvisible.setVisible(false);
     }
     
     @FXML
@@ -199,7 +211,7 @@ public class ItemlistController implements Initializable{
             }
         }
         BookCRUD.deleteBook(book.getid());
-        formvisible.setVisible(false);
+        resetform();
         initialize();
     }
     
