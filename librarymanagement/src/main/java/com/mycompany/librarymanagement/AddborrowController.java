@@ -65,6 +65,24 @@ public class AddborrowController implements Initializable {
 
     @FXML
     private ImageView borrowfeeerror;
+    
+    @FXML
+    private ImageView titleerror;
+    
+    @FXML
+    private ImageView membererror;
+    
+    @FXML
+    private ImageView librarianerror;
+    
+    @FXML
+    private ImageView fromerror;
+    
+    @FXML
+    private ImageView toerror;
+    
+    @FXML
+    private ImageView actualerror;
 
     static Borrow borrow;
 
@@ -92,27 +110,51 @@ public class AddborrowController implements Initializable {
         }
         if (borrow.getbook_id() <= 0) {
             error = "please choose book title";
+            titleerror.setVisible(true);
+        } else{
+            titleerror.setVisible(false);
         }
         if (borrow.getcard_member_id() <= 0) {
             error = "please choose card member";
+            membererror.setVisible(true);
+        } else{
+            membererror.setVisible(false);
         }
         if (borrow.getlibrarian_id() <= 0) {
             error = "please choose librarian";
+            librarianerror.setVisible(true);
+        }else{
+            librarianerror.setVisible(false);
         }
         if (borrow.getborrow_from_date() == null) {
             error = "please choose date borrow";
+            fromerror.setVisible(true);
+        } else{
+            fromerror.setVisible(false);
         }
         if (borrow.getborrow_to_date() == null) {
             error = "please choose date return";
+            toerror.setVisible(true);
+        } else{
+            toerror.setVisible(false);
         }
         if (borrow.getactual_returned_date() == null) {
             error = "please choose date actual returned";
+            actualerror.setVisible(true);
+        } else{
+            actualerror.setVisible(false);
         }
         if (borrow.getlate_fee() < 0) {
             error = "late fee must be over or equal to 0";
+            latefeeerror.setVisible(true);
+        } else{
+            latefeeerror.setVisible(false);
         }
         if (borrow.getborrow_fee() <= 0) {
             error = "borrow fee must be over than 0";
+            borrowfeeerror.setVisible(true);
+        } else{
+            borrowfeeerror.setVisible(false);
         }
         if (borrow.gettotal() <= 0) {
             error = "total fee must be over than 0";
@@ -139,9 +181,7 @@ public class AddborrowController implements Initializable {
         );
 
         if (validateform()) {
-            System.out.println("1");
             BorrowCRUD.insert(borrow);
-            System.out.println("2");
             booktitle.setValue(null);
             member.setValue(null);
             librarian.setValue(null);

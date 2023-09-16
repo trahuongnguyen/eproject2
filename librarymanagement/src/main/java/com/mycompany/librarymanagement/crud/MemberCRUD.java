@@ -114,4 +114,40 @@ public class MemberCRUD {
         
         disconnect();
     }
+    
+    public static void update(Member member){
+        connect();
+        
+        String sql = "update card_members set full_name = ?, phone_number = ?, address = ?, birthday = ?, due_date = ?, email = ? where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, member.getfull_name());
+            statement.setString(2, member.getphone_number());
+            statement.setString(3, member.getaddress());
+            statement.setString(4, member.getbirthday());
+            statement.setString(5, member.getdue_date());
+            statement.setString(6, member.getemail());
+            statement.setInt(7, member.getid());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
+    
+    public static void delete(int id){
+        connect();
+        
+        String sql = "delete from card_members where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(MemberCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

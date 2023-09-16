@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="card" onMouseClicked="#get_list_by_category" prefHeight="185.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.librarymanagement.CategoryController">
+   <children>
+      <ImageView fx:id="fisrt_image" fitHeight="155.0" fitWidth="155.0" layoutX="27.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" rotate="-10.0" AnchorPane.leftAnchor="30.0">
+         <image>
+            <Image url="@../../../img/Fiction/451_do_F.jpg" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="second_image" fitHeight="155.0" fitWidth="155.0" layoutX="174.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" rotate="10.0" AnchorPane.leftAnchor="80.0">
+         <image>
+            <Image url="@../../../img/Fiction/A_Thousand_Ships.jpg" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <ImageView fx:id="third_image" fitHeight="155.0" fitWidth="155.0" layoutX="75.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="55.0">
+         <image>
+            <Image url="@../../../img/Fiction/Anna_Karenina.jpg" />
+         </image>
+         <effect>
+            <DropShadow />
+         </effect>
+      </ImageView>
+      <Label fx:id="category_name" layoutX="216.0" layoutY="59.0" text="Fiction">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="quantity" layoutX="216.0" layoutY="102.0" text="Quantity: 18">
+         <font>
+            <Font name="Berlin Sans FB Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

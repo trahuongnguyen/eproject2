@@ -30,7 +30,7 @@
       </Text>
       <AnchorPane fx:id="formvisible" layoutX="422.0" layoutY="147.0" prefHeight="218.0" prefWidth="318.0" visible="false">
          <children>
-            <Text layoutX="53.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+            <Text layoutX="53.0" layoutY="59.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author Name">
                <font>
                   <Font size="20.0" />
                </font>

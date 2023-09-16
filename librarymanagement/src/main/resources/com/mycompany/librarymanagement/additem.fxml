@@ -64,7 +64,7 @@
             <Font size="20.0" />
          </font>
       </Text>
-      <TextField fx:id="txtimage" layoutX="120.0" layoutY="266.0" promptText="Image" />
+      <TextField fx:id="txtimage" layoutX="120.0" layoutY="266.0" onMouseClicked="#chooseimage" promptText="Image" />
       <ImageView fx:id="errortitle" fitHeight="20.0" fitWidth="20.0" layoutX="223.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../image/warning.png" />

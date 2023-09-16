@@ -105,4 +105,35 @@ public class PublisherCRUD extends BaseCRUD{
         
         disconnect();
     }
+    
+    public static void update(Publisher publisher){
+        connect();
+        
+        String sql = "update publishers set name = ? where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, publisher.getname());
+            statement.setInt(2, publisher.getid());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(PublisherCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
+    
+    public static void delete(int id){
+        connect();
+        
+        String sql = "delete from publishers where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(PublisherCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

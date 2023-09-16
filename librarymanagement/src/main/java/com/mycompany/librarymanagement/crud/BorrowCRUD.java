@@ -66,6 +66,56 @@ public class BorrowCRUD extends BaseCRUD{
         return borrowList;
     }
     
+    public static List<Borrow> getListByLibrarianId(int id){
+        List<Borrow> borrowList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from borrowes where librarian_id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Borrow borrow = new Borrow();
+                borrow.readRecord(resultSet);
+                borrowList.add(borrow);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return borrowList;
+    }
+    
+    public static List<Borrow> getListByMemberId(int id){
+        List<Borrow> borrowList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from borrowes where card_member_id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Borrow borrow = new Borrow();
+                borrow.readRecord(resultSet);
+                borrowList.add(borrow);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return borrowList;
+    }
+    
     public static void insert(Borrow borrow){
         connect();
         

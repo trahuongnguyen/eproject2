@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.JFXButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -12,7 +14,7 @@
    <children>
       <ScrollPane accessibleRole="TABLE_VIEW" hbarPolicy="NEVER" layoutX="-2.0" layoutY="42.0" pannable="true" vbarPolicy="NEVER" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="42.0">
          <content>
-            <TableView fx:id="collectiontable" prefHeight="300.0">
+            <TableView fx:id="collectiontable" onMouseClicked="#display_selected_item" prefHeight="300.0">
                <columns>
                   <TableColumn fx:id="stt" prefWidth="70.0" text="STT" />
                   <TableColumn fx:id="categoryname" prefWidth="250.0" text="Category Name" />
@@ -27,5 +29,39 @@
             <Font name="System Bold" size="26.0" />
          </font>
       </Text>
+      <AnchorPane fx:id="formvisible" layoutX="450.0" layoutY="72.0" prefHeight="231.0" prefWidth="302.0" visible="false">
+         <children>
+            <Text layoutX="39.0" layoutY="60.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Category Name" AnchorPane.leftAnchor="39.0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="categorytxt" layoutX="39.0" layoutY="73.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <Text layoutX="39.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Located In">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Text>
+            <TextField fx:id="locatedtxt" layoutX="39.0" layoutY="160.0" AnchorPane.leftAnchor="39.0">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </TextField>
+            <JFXButton layoutX="48.0" layoutY="231.0" onMouseClicked="#update" style="-fx-background-color: #eddfaf;" text="Update">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="165.0" layoutY="231.0" onMouseClicked="#delete" style="-fx-background-color: #ebdaa2;" text="Delete">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

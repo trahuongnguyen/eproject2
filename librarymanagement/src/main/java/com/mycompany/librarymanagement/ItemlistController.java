@@ -12,7 +12,9 @@ import com.mycompany.librarymanagement.model.BookInfo;
 import com.mycompany.librarymanagement.model.Borrow;
 import com.mycompany.librarymanagement.model.Category;
 import com.mycompany.librarymanagement.model.Publisher;
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.property.ReadOnlyObjectWrapper;
@@ -28,6 +30,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Callback;
 
 public class ItemlistController implements Initializable{
@@ -183,11 +187,41 @@ public class ItemlistController implements Initializable{
                 chooseauthor.getValue()!=null?AuthorCRUD.getlistByName(chooseauthor.getValue()).get(0).getid():itemtable.getSelectionModel().getSelectedItem().getBook().getauthor_id(), 
                 validateform(txtquantity)?Integer.parseInt(txtquantity.getText()):itemtable.getSelectionModel().getSelectedItem().getBook().getquantity(), 
                 validateform(txtlost_or_broken)?Integer.parseInt(txtlost_or_broken.getText()):itemtable.getSelectionModel().getSelectedItem().getBook().getlost_or_broken(), 
-                !txtimage.getText().equalsIgnoreCase("")&&!txtimage.getText().isEmpty()?txtimage.getText():itemtable.getSelectionModel().getSelectedItem().getBook().getimage()
+                !txtimage.getText().equalsIgnoreCase("")?txtimage.getText():itemtable.getSelectionModel().getSelectedItem().getBook().getimage()
         );
         BookCRUD.update(bo, book.getid());
         resetform();
         initialize();
+    }
+    
+    @FXML
+    void chooseimage(MouseEvent event){
+        FileChooser imagechoose = new FileChooser();
+        File imageselected = imagechoose.showOpenDialog(new Stage());
+        imageselected.getParentFile();
+        txtimage.setText(imageselected.getPath());
+        if(validateimage(txtimage)!=null){
+            txtimage.setText(validateimage(txtimage));
+        }
+    }
+    
+    String validateimage(TextField txt){
+        String path = null;
+        List<Integer> indexList = new ArrayList<>();
+        if(!txt.getText().isBlank()&&!txt.getText().isEmpty()){
+            int index = 0;
+            while (true) {  
+                index = txt.getText().indexOf("\\", index+1);
+                if(index<0){
+                    break;
+                }
+                indexList.add(index);
+            }
+            if(indexList.size()>=2){
+                path = txt.getText().substring(indexList.get(indexList.size()-2)+1,indexList.get(indexList.size()-1))+"/"+txt.getText().substring(indexList.get(indexList.size()-1)+1);
+            }
+        }
+        return path;
     }
     
     void resetform(){

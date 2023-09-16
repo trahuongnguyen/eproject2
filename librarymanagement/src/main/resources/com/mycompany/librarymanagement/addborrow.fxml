@@ -55,12 +55,12 @@
          </font>
       </Text>
       <DatePicker fx:id="from" layoutX="100.0" layoutY="183.0" />
-      <Text layoutX="287.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
+      <Text layoutX="325.0" layoutY="203.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To">
          <font>
             <Font size="20.0" />
          </font>
       </Text>
-      <DatePicker fx:id="to" layoutX="320.0" layoutY="182.0" />
+      <DatePicker fx:id="to" layoutX="352.0" layoutY="182.0" />
       <Text layoutX="40.0" layoutY="245.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Actual Returned Date" AnchorPane.leftAnchor="40.0">
          <font>
             <Font size="20.0" />
@@ -85,6 +85,36 @@
          </image>
       </ImageView>
       <ImageView fx:id="borrowfeeerror" fitHeight="20.0" fitWidth="20.0" layoutX="522.0" layoutY="268.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="titleerror" fitHeight="20.0" fitWidth="20.0" layoutX="288.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="membererror" fitHeight="20.0" fitWidth="20.0" layoutX="288.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="toerror" fitHeight="20.0" fitWidth="20.0" layoutX="531.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="librarianerror" fitHeight="20.0" fitWidth="20.0" layoutX="288.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="fromerror" fitHeight="20.0" fitWidth="20.0" layoutX="279.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../../../image/warning.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="actualerror" fitHeight="20.0" fitWidth="20.0" layoutX="420.0" layoutY="227.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
             <Image url="@../../../image/warning.png" />
          </image>

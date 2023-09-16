@@ -134,4 +134,39 @@ public class LibrarianCRUD extends BaseCRUD{
         
         disconnect();
     }
+    
+    public static void update(Librarian librarian){
+        connect();
+        
+        String sql = "update librarians set full_name = ?, address = ?, birthday = ?, email = ?, phone_number = ? where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, librarian.getfull_name());
+            statement.setString(2, librarian.getaddress());
+            statement.setString(3, librarian.getbirthday());
+            statement.setString(4, librarian.getemail());
+            statement.setString(5, librarian.getphone_number());
+            statement.setInt(6, librarian.getid());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(LibrarianCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
+    
+    public static void delete(int id){
+        connect();
+        
+        String sql = "delete from librarians where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(LibrarianCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

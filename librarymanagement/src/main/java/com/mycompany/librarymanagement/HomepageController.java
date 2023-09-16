@@ -2,15 +2,13 @@ package com.mycompany.librarymanagement;
 
 import com.mycompany.librarymanagement.crud.AuthorCRUD;
 import com.mycompany.librarymanagement.crud.BookCRUD;
+import com.mycompany.librarymanagement.crud.CategoryCRUD;
 import com.mycompany.librarymanagement.model.Book;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import com.mycompany.librarymanagement.model.Category;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -82,6 +80,11 @@ public class HomepageController implements Initializable {
         return view;
     }
 
+    static List<Category> categoryList = CategoryCRUD.getlist();
+    static HBox hbox;
+    static VBox vbox;
+    static ScrollPane bottomscroll;
+    
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         mainpanestatic = mainpane;
@@ -89,8 +92,8 @@ public class HomepageController implements Initializable {
         Pane pane = getPage("list");
         navpane.setLeft(pane);
         List<Book> dataBook = BookCRUD.getList();
-        HBox hbox = new HBox();
-        VBox vbox = new VBox();
+        hbox = new HBox();
+        vbox = new VBox();
         for (Book book : dataBook) {
             BookController.author = AuthorCRUD.getlistByID(book.getauthor_id()).get(0).getfull_name();
             BookController.image = new Image(App.class.getResourceAsStream("/img/"+book.getimage()));
@@ -104,13 +107,17 @@ public class HomepageController implements Initializable {
         vbox.getChildren().add(hbox);
         bottomlayout.setContent(vbox);
         HBox hbox2 = new HBox();
-        for (int i = dataBook.size(); i > 0; i--) {
-            CardController.author = AuthorCRUD.getlistByID(dataBook.get(i-1).getauthor_id()).get(0).getfull_name();
-            CardController.image = new Image(App.class.getResourceAsStream("/img/"+dataBook.get(i-1).getimage()));
-            CardController.title = dataBook.get(i-1).gettitle();
-            hbox2.getChildren().add(getPage("card"));
+        for (Category category : categoryList) {
+            CategoryController.category_name_static = category.gettitle();
+            List<Book> bookList = BookCRUD.getListByCategoryId(category.getid());
+            CategoryController.fisrt_image_static = new Image(App.class.getResourceAsStream("/img/" + bookList.get(0).getimage()));
+            CategoryController.second_image_static = new Image(App.class.getResourceAsStream("/img/" + bookList.get(1).getimage()));
+            CategoryController.third_image_static = new Image(App.class.getResourceAsStream("/img/" + bookList.get(2).getimage()));
+            CategoryController.quantity_static = "Quantity: "+bookList.size();
+            hbox2.getChildren().add(getPage("category"));
         }
         toplayout.setContent(hbox2);
+        bottomscroll = bottomlayout;
     }
     
     @FXML

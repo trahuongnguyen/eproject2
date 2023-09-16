@@ -8,7 +8,9 @@ import com.mycompany.librarymanagement.model.Author;
 import com.mycompany.librarymanagement.model.Book;
 import com.mycompany.librarymanagement.model.Category;
 import com.mycompany.librarymanagement.model.Publisher;
+import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -19,6 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 public class AdditemController implements Initializable{
 
@@ -75,6 +79,25 @@ public class AdditemController implements Initializable{
             return false;
         }
         return true;
+    }
+    
+    String validateimage(TextField txt){
+        String path = null;
+        List<Integer> indexList = new ArrayList<>();
+        if(!txt.getText().isBlank()&&!txt.getText().isEmpty()){
+            int index = 0;
+            while (true) {  
+                index = txt.getText().indexOf("\\", index+1);
+                if(index<0){
+                    break;
+                }
+                indexList.add(index);
+            }
+            if(indexList.size()>=2){
+                path = txt.getText().substring(indexList.get(indexList.size()-2)+1,indexList.get(indexList.size()-1))+"/"+txt.getText().substring(indexList.get(indexList.size()-1)+1);
+            }
+        }
+        return path;
     }
     
     boolean validateBook(Book book){
@@ -139,7 +162,7 @@ public class AdditemController implements Initializable{
                 chooseauthor.getValue()!=null?AuthorCRUD.getlistByName(chooseauthor.getValue()).get(0).getid():0,
                 validatenumber(txtquantity)?Integer.parseInt(txtquantity.getText()):0,
                 0,
-                !txtimage.getText().isEmpty()?txtimage.getText():""
+                !txtimage.getText().isEmpty()&&!txtimage.getText().isBlank()?txtimage.getText():""
         );
         if(validateBook(book)){
             List<Book> dataList = BookCRUD.getListByName(book.gettitle());
@@ -174,7 +197,6 @@ public class AdditemController implements Initializable{
                     }
                 }
             }
-                     
         }
     }
 
@@ -207,4 +229,14 @@ public class AdditemController implements Initializable{
         initialize();
     }
 
+    @FXML
+    void chooseimage(MouseEvent event){
+        FileChooser imagechoose = new FileChooser();
+        File imageselected = imagechoose.showOpenDialog(new Stage());
+        imageselected.getParentFile();
+        txtimage.setText(imageselected.getPath());
+        if(validateimage(txtimage)!=null){
+            txtimage.setText(validateimage(txtimage));
+        }
+    }
 }

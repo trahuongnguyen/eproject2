@@ -106,4 +106,36 @@ public class CategoryCRUD extends BaseCRUD{
         
         disconnect();
     }
+    
+    public static void update(Category category){
+        connect();
+        
+        String sql = "update categories set title = ?, located_in = ? where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setString(1, category.gettitle());
+            statement.setString(2, category.getlocated_in());
+            statement.setInt(3, category.getid());
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
+    
+    public static void delete(int id){
+        connect();
+        
+        String sql = "delete from categories where id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            statement.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(CategoryCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+    }
 }

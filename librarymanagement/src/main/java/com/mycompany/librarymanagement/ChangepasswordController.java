@@ -56,24 +56,31 @@ public class ChangepasswordController {
         retext.setText(null);
     }
     
-    boolean validatetext(TextField txt){
-        return !(txt.getText()==null||txt.getText().isEmpty());
-    }
     boolean validateform (){
         boolean check = true;
-        if(validatetext(newpass)){
+        if(newpass.getText().isBlank()==false && retext.getText().isBlank()==false){
+            if(newpass.getText().equalsIgnoreCase(retext.getText())){
+                newpasserror.setVisible(false);
+                retexterror.setVisible(false);
+            } else{
+                newpasserror.setVisible(true);
+                retexterror.setVisible(true);
+                check = false;
+            }
+        } else if(newpass.getText().isBlank()==false && retext.getText().isBlank()==true){
             newpasserror.setVisible(false);
-        } else {
-            newpasserror.setVisible(true);
+            retexterror.setVisible(true);
             check = false;
-        }
-        if(validatetext(retext)){
+        } else if(newpass.getText().isBlank()==true && retext.getText().isBlank()==false){
+            newpasserror.setVisible(true);
             retexterror.setVisible(false);
+            check = false;
         } else{
+            newpasserror.setVisible(true);
             retexterror.setVisible(true);
             check = false;
         }
-        if(validatetext(oldpass)){
+        if(oldpass.getText().isBlank()==false){
             if(!oldpass.getText().equalsIgnoreCase(admin.getPassword())){
                 olpasserror.setVisible(true);
                 check = false;
@@ -83,14 +90,6 @@ public class ChangepasswordController {
         } else{
             olpasserror.setVisible(true);
             check = false;
-        }
-        if(check == true){
-            if(newpass.getText().equalsIgnoreCase(retext.getText())){
-                check = true;
-            } else{
-                retexterror.setVisible(true);
-                check = false;
-            }
         }
         return check;
     }

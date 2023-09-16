@@ -116,6 +116,56 @@ public class BookCRUD extends BaseCRUD{
         return bookList;
     }
     
+    public static List<Book> getListByCategoryId(int id){
+        List<Book> bookList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from books where category_id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Book book = new Book();
+                book.readRecord(resultSet);
+                bookList.add(book);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return bookList;
+    }
+    
+    public static List<Book> getListByPublisherId(int id){
+        List<Book> bookList = new ArrayList<>();
+        
+        connect();
+        
+        String sql = "select * from books where publisher_id = ?";
+        try {
+            statement = conn.prepareStatement(sql);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            
+            while (resultSet.next()) {                
+                Book book = new Book();
+                book.readRecord(resultSet);
+                bookList.add(book);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(BorrowCRUD.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        disconnect();
+        
+        return bookList;
+    }
+    
     public static void deleteBook(int id){
         connect();
         
